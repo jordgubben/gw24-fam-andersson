@@ -17,9 +17,24 @@ var _potential_conversations: Dictionary = {
 		{"speaker": "Godot mascot", "text": "Dialog text from dictionary #1"},
 		{"text": "Narration dictionary #1"},
 	]),
+	"#1a": ConversationSegment.new("Another option (sometime after first)", [
+		{"passed": "#1"}
+	], [
+		{"text": "Follow up on #1"},
+	]),
 	"#2": ConversationSegment.new("Second alternative from dictionary", [], [
 		{"speaker": "Godot mascot", "text": "Dialog text from dictionary #2"},
 		{"text": "Narration dictionary #2"},
+	]),
+	"#2a": ConversationSegment.new("Different option (sometime after second)", [
+		{"passed": "#2"}
+	], [
+		{"text": "Follow up on #2"},
+	]),
+	"1+2=3": ConversationSegment.new("Conclusive option (after both 'originals')", [
+		{"passed": "#1"}, {"passed": "#2"},
+	], [
+		{"text": "Follow up on #1 and #2"},
 	]),
 }
 
@@ -36,7 +51,11 @@ func populate_options():
 	var available_conversations = []
 	for key in _potential_conversations.keys():
 		var segment:ConversationSegment = _potential_conversations[key]
-		if not key in _passed_conversations:
+		# Don't allow doing the same thing twice
+		if key in _passed_conversations:
+			continue
+		# All prequisites must be fullfilled
+		if segment.is_presentable(_passed_conversations):
 			available_conversations.append([key, segment])
 
 	# Add buttons for each available conversation
@@ -79,8 +98,20 @@ class ConversationSegment:
 		self.prequisites = preq
 		self.narrative = narr
 
-	func is_presentable():
+	func is_presentable(passed: Array):
+		for pr in prequisites:
+			if not fullfilled(pr, passed):
+				return false
 		return true
+
+	func fullfilled(pr, passed: Array):
+		match pr:
+			{"passed": var key}:
+				return key in passed
+
+			_:
+				printerr("Unrechognized prequisite:", pr)
+				return false
 
 	func present(out):
 		for el in self.narrative:
