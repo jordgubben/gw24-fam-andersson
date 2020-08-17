@@ -1,16 +1,20 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal option_selected(key)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Clear placeholders
+	for c in $margin/vbox.get_children():
+		self.remove_child(c)
+		c.queue_free()
 
+func add_option(key: String, title: String):
+	var b = Button.new()
+	b.text = title
+	b.connect("pressed", self, "on_option_clicked", [key])
+	$margin/vbox.add_child(b)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func on_option_clicked(key:String):
+	prints("Selected: ", key)
+	self.emit_signal("option_selected", key)

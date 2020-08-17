@@ -1,16 +1,25 @@
 extends Control
 
+onready var _dialouge_prototype: Control = $margin/vbox/dialouge_example
+onready var _narration_prototype: RichTextLabel = $margin/vbox/narration_example
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Remove prototypes from tree
+	# (but keep them for future cloning)
+	self.remove_child(_dialouge_prototype)
+	self.remove_child(_narration_prototype)
 
+func queue_dialouge(speaker: String, dialoug: String):
+	var d =_dialouge_prototype.duplicate()
+	d.get_node("dialouge_label").bbcode_text = dialoug
+	$margin/vbox.add_child(d)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func queue_narration(narration: String):
+	var n =_narration_prototype.duplicate()
+	n.bbcode_text = narration
+	$margin/vbox.add_child(n)
+
+func clear():
+	for c in $margin/vbox.get_children():
+		self.remove_child(c)
+		c.queue_free()

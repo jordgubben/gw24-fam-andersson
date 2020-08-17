@@ -38,12 +38,12 @@ margin_top = 40.0
 margin_right = 472.0
 margin_bottom = 494.0
 
-[node name="Dialoug" type="Control" parent="margin/vbox"]
+[node name="dialouge_example" type="Control" parent="margin/vbox"]
 margin_right = 432.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 
-[node name="speaker_portrait" type="TextureRect" parent="margin/vbox/Dialoug"]
+[node name="speaker_portrait" type="TextureRect" parent="margin/vbox/dialouge_example"]
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = -60.0
@@ -52,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="speaker_name" type="Label" parent="margin/vbox/Dialoug"]
+[node name="speaker_name" type="Label" parent="margin/vbox/dialouge_example"]
 margin_left = 72.0
 margin_top = 24.0
 margin_right = 218.0
@@ -63,7 +63,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="margin/vbox/Dialoug"]
+[node name="dialouge_label" type="RichTextLabel" parent="margin/vbox/dialouge_example"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,7 +77,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="naration_example" type="RichTextLabel" parent="margin/vbox"]
+[node name="narration_example" type="RichTextLabel" parent="margin/vbox"]
 margin_top = 104.0
 margin_right = 432.0
 margin_bottom = 149.0

@@ -17,5 +17,7 @@ __meta__ = {
 }
 
 [node name="narrative" parent="ui" instance=ExtResource( 3 )]
+visible = false
 
 [node name="options" parent="ui" instance=ExtResource( 2 )]
+[connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
