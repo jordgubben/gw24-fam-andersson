@@ -77,7 +77,9 @@ func _on_options_option_selected(key):
 	_narrative_panel.visible = true
 
 	# Record as passed conversation
-	_passed_conversations.append(key)
+	_passed_conversations.push_back(key)
+
+
 
 func _on_narrative_pressentation_completed():
 	_narrative_panel.visible = false
@@ -124,3 +126,9 @@ class ConversationSegment:
 
 				_:
 					printerr("Unablle to pressent", el)
+
+
+func _on_rewind_btn_pressed():
+	prints("<< Rewinding a by a single step")
+	_passed_conversations.pop_back()
+	self.populate_options()
