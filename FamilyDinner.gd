@@ -10,6 +10,7 @@ const NarrativePanel = preload("res://ui/NarrativePanel.gd")
 export(NodePath) var narrative_path = NodePath("ui/narrative")
 onready var _narrative_panel: NarrativePanel = self.get_node(narrative_path)
 
+var _passed_conversations = []
 
 var _potential_conversations: Dictionary = {
 	"#1": ConversationSegment.new("First alternative from dictionary", [], [
@@ -25,8 +26,23 @@ var _potential_conversations: Dictionary = {
 
 # Populate options panel with some placeholders
 func _ready():
+	self.populate_options()
+
+
+func populate_options():
+	_options_panel.clear_options()
+
+	# Filter out available conversations
+	var available_conversations = []
 	for key in _potential_conversations.keys():
 		var segment:ConversationSegment = _potential_conversations[key]
+		if not key in _passed_conversations:
+			available_conversations.append([key, segment])
+
+	# Add buttons for each available conversation
+	for a in available_conversations:
+		var key: String = a[0]
+		var segment:ConversationSegment = a[1]
 		var title: String = segment.title
 		_options_panel.add_option(key, title)
 
@@ -41,8 +57,12 @@ func _on_options_option_selected(key):
 	segment.present(_narrative_panel)
 	_narrative_panel.visible = true
 
+	# Record as passed conversation
+	_passed_conversations.append(key)
+
 func _on_narrative_pressentation_completed():
 	_narrative_panel.visible = false
+	self.populate_options()
 	_options_panel.visible = true
 
 #

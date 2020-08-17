@@ -15,6 +15,12 @@ func add_option(key: String, title: String):
 	b.connect("pressed", self, "on_option_clicked", [key])
 	$margin/vbox.add_child(b)
 
+func clear_options():
+	for b in $margin/vbox.get_children():
+		prints("Removing", b, "from" , self)
+		self.remove_child(b)
+		b.queue_free()
+
 func on_option_clicked(key:String):
 	prints("Selected: ", key)
 	self.emit_signal("option_selected", key)

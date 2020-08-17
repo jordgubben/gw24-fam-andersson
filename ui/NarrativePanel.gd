@@ -24,6 +24,5 @@ func clear():
 		self.remove_child(c)
 		c.queue_free()
 
-
 func _on_continue_button_pressed():
 	self.emit_signal("pressentation_completed")
