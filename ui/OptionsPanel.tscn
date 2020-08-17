@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/OptionsPanel.gd" type="Script" id=1]
+
+[node name="OptionsPanel" type="Control"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.917647, 0.847059, 0.709804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="margin"]
+margin_right = 432.0
+margin_bottom = 520.0
+
+[node name="Button_1" type="Button" parent="margin/vbox"]
+margin_right = 432.0
+margin_bottom = 20.0
+custom_constants/hseparation = 10
+text = "Do thing"
+
+[node name="Button_2" type="Button" parent="margin/vbox"]
+margin_top = 24.0
+margin_right = 432.0
+margin_bottom = 44.0
+custom_constants/hseparation = 10
+text = "Do thing"
+
+[node name="Button_3" type="Button" parent="margin/vbox"]
+margin_top = 48.0
+margin_right = 432.0
+margin_bottom = 68.0
+custom_constants/hseparation = 10
+text = "Do thing"
