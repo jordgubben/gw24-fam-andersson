@@ -32,7 +32,7 @@ var _potential_conversations: Dictionary = {
 		{"text": "Follow up on #2"},
 	]),
 	"1+2=3": ConversationSegment.new("Conclusive option (after both 'originals')", [
-		{"passed": "#1"}, {"passed": "#2"},
+		{"passed": ["#1", "#2"]},
 	], [
 		{"text": "Follow up on #1 and #2"},
 	]),
@@ -109,11 +109,20 @@ class ConversationSegment:
 	func fullfilled(pr, passed: Array):
 		match pr:
 			{"passed": var key}:
-				return key in passed
+				if key is String:
+					return key in passed
+				elif key is Array:
+					for k in key:
+						if not k in passed:
+							return false
+					return true
+				else:
+					printerr("Unrechognized type for 'passed':", typeof(key))
 
 			_:
 				printerr("Unrechognized prequisite:", pr)
-				return false
+		#
+		return false
 
 	func present(out):
 		for el in self.narrative:
