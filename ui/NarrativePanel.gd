@@ -3,6 +3,8 @@ extends Control
 onready var _dialouge_prototype: Control = $margin/vbox/dialouge_example
 onready var _narration_prototype: RichTextLabel = $margin/vbox/narration_example
 
+signal pressentation_completed()
+
 func _ready():
 	# Remove prototypes from tree
 	# (but keep them for future cloning)
@@ -23,3 +25,7 @@ func clear():
 	for c in $margin/vbox.get_children():
 		self.remove_child(c)
 		c.queue_free()
+
+
+func _on_continue_button_pressed():
+	self.emit_signal("pressentation_completed")

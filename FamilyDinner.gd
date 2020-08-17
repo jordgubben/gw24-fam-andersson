@@ -41,6 +41,9 @@ func _on_options_option_selected(key):
 	segment.present(_narrative_panel)
 	_narrative_panel.visible = true
 
+func _on_narrative_pressentation_completed():
+	_narrative_panel.visible = false
+	_options_panel.visible = true
 
 #
 # A Narrative sequence is an exchange of thouhgts and feelings

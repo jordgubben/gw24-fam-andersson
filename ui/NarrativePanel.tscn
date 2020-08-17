@@ -92,7 +92,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue cutton" type="Button" parent="."]
+[node name="continue_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -105,3 +105,4 @@ text = "Continue.."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="continue_button" to="." method="_on_continue_button_pressed"]

@@ -20,4 +20,5 @@ __meta__ = {
 visible = false
 
 [node name="options" parent="ui" instance=ExtResource( 2 )]
+[connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]
 [connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
