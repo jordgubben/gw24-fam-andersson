@@ -1,23 +1,21 @@
 extends Control
 
-onready var _dialouge_prototype: Control = $margin/vbox/dialouge_example
-onready var _narration_prototype: RichTextLabel = $margin/vbox/narration_example
+var DialougeBox: PackedScene = preload("res://ui/DialougeBox.tscn")
+var NarrationBox: PackedScene = preload("res://ui/NarrationBox.tscn")
 
 signal pressentation_completed()
 
 func _ready():
-	# Remove prototypes from tree
-	# (but keep them for future cloning)
-	self.remove_child(_dialouge_prototype)
-	self.remove_child(_narration_prototype)
+	# Remove placeholders
+	clear()
 
 func queue_dialouge(speaker: String, dialoug: String):
-	var d =_dialouge_prototype.duplicate()
+	var d = DialougeBox.instance()
 	d.get_node("dialouge_label").bbcode_text = dialoug
 	$margin/vbox.add_child(d)
 
 func queue_narration(narration: String):
-	var n =_narration_prototype.duplicate()
+	var n = NarrationBox.instance()
 	n.bbcode_text = narration
 	$margin/vbox.add_child(n)
 

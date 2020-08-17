@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="narration_example" type="RichTextLabel"]
+margin_top = 104.0
+margin_right = 432.0
+margin_bottom = 149.0
+bbcode_enabled = true
+bbcode_text = "[center] Lorem] [color=green]ipsum[/color] dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. 
+[/center]"
+text = " Lorem] ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. 
+"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
