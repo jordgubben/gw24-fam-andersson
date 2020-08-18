@@ -26,24 +26,28 @@ __meta__ = {
 [node name="margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -66.0
-custom_constants/margin_right = 40
-custom_constants/margin_top = 40
-custom_constants/margin_left = 40
-custom_constants/margin_bottom = 40
+margin_bottom = -91.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="vbox" type="VBoxContainer" parent="margin"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 472.0
-margin_bottom = 494.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 489.0
 
 [node name="dialouge_example" parent="margin/vbox" instance=ExtResource( 1 )]
+margin_right = 472.0
 
 [node name="narration_example" parent="margin/vbox" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_right = 472.0
+margin_bottom = 124.0
 
 [node name="continue_button" type="Button" parent="."]
 anchor_left = 1.0

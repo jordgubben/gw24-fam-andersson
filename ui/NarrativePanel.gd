@@ -22,7 +22,8 @@ func queue_dialouge(speaker: Person, dialoug: String):
 
 func queue_narration(narration: String):
 	var n = NarrationBox.instance()
-	n.bbcode_text = narration
+	var label = "[center]" + narration +"[/center]"
+	n.get_node("narration_label").bbcode_text = label
 	self.queue_element(n)
 
 func queue_element(new_el: Control):
