@@ -101,7 +101,7 @@ var _potential_conversations: Dictionary = {
 	"---": ConversationSegment.new("--- --- --- --- --- ---", [	], [	]),
 
 	"#1": ConversationSegment.new("First alternative from dictionary", [], [
-		{"speaker": "Godot mascot", "text": "Dialog text from dictionary #1"},
+		{"speaker": "father-in-law", "text": "Dialog text from dictionary #1"},
 		{"text": "Narration dictionary #1"},
 	]),
 	"#1a": ConversationSegment.new("Another option (sometime after first)", [
@@ -110,7 +110,7 @@ var _potential_conversations: Dictionary = {
 		{"text": "Follow up on #1"},
 	]),
 	"#2": ConversationSegment.new("Second alternative from dictionary", [], [
-		{"speaker": "Godot mascot", "text": "Dialog text from dictionary #2"},
+		{"speaker": "mother-in-law", "text": "Dialog text from dictionary #2"},
 		{"text": "Narration dictionary #2"},
 	]),
 	"#2a": ConversationSegment.new("Different option (sometime after second)", [
@@ -157,10 +157,14 @@ func _on_options_option_selected(key):
 	# Hide options
 	_options_panel.visible = false
 
+	var speakers = {}
+	for c in $dining_room_occupants.get_children():
+		speakers[c.name] = c
+
 	# Present narrative pannel
 	_narrative_panel.clear();
 	var segment:ConversationSegment = _potential_conversations[key]
-	segment.present(_narrative_panel)
+	segment.present(speakers, _narrative_panel)
 	_narrative_panel.visible = true
 
 	# Record as passed conversation
@@ -211,11 +215,15 @@ class ConversationSegment:
 		#
 		return false
 
-	func present(out):
+	func present(speakers, out):
 		for el in self.narrative:
 			match el:
-				{"text": var text, "speaker": var speaker}:
-					out.queue_dialouge(speaker, text)
+				{"text": var text, "speaker": var speaker_id}:
+					if speaker_id in speakers:
+						var speaker = speakers[speaker_id]
+						out.queue_dialouge(speaker, text)
+					else:
+						printerr("Unknown speaker: ", speaker_id)
 
 				{"text": var text}:
 					out.queue_narration(text)
