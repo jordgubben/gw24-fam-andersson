@@ -24,7 +24,7 @@ var _potential_conversations: Dictionary = {
 		{S: "mother-in-law", "text": "It brings such you to finaly get to meet you."},
 	]),
 	"start->inlaws": ConversationSegment.new("It's great to finally meet my inlaws", [
-		{"passed": "start"},
+		{"follows": "start"},
 	], [
 		{S: "mother-in-law", "text": "\"Inlaws\"?!"},
 		{S: "mother-in-law",
@@ -33,7 +33,7 @@ var _potential_conversations: Dictionary = {
 					"and [b]boats[/b] from behind his newspaper."},
 	]),
 	"start->inlaws->apologize": ConversationSegment.new("(Apologize)", [
-		{"passed": "start->inlaws"},
+		{"follows": "start->inlaws"},
 	], [
 		{S: "me", "text": "Oh.. I didn't mean to imply.."},
 		{S: SO, "text": "Mother. That's not what he/she said."},
@@ -44,7 +44,7 @@ var _potential_conversations: Dictionary = {
 		{"speaker": IV, "text": "Saved by the bell, literally."}
 	]),
 	"start->inlaws->laugh": ConversationSegment.new("(Laugh it off)", [
-		{"passed": "start->inlaws"},
+		{"follows": "start->inlaws"},
 	], [
 		{S: "me", "text": "Of course not."},
 		{S: "me", "text": "I've just been seeing your son/dauhter for so long."},
@@ -60,7 +60,7 @@ var _potential_conversations: Dictionary = {
 		{"text": "She shifts gracefully in to the next room, wile keeping her eyes fixed on my fidgeting fiance."},
 	]),
 	"start->home": ConversationSegment.new("I've been so looking forward to seeing my BFs/GFs home.", [
-		{"passed": "start"},
+		{"follows": "start"},
 	], [
 		{S: "me", "text": "I'm just so supprised by how lovely this home is!"},
 		{S: "sister-in-law", "text": "\"Supprised\"?"},
@@ -70,7 +70,7 @@ var _potential_conversations: Dictionary = {
 		{S: "me", "text": "Um.. What I meant was.."},
 	]),
 	"start->home->rustic": ConversationSegment.new("..it's so rustic and charming", [
-		{"passed": "start->home"},
+		{"follows": "start->home"},
 	], [
 		{"text": "My mother-in-law struggles to stay humble, whilst truly beaming with pride."},
 		{S: "mother-in-law", "text": "Well, it might be an old place."},
@@ -83,7 +83,7 @@ var _potential_conversations: Dictionary = {
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
 	]),
 	"start->home->modern": ConversationSegment.new("..it's so modern and practical", [
-		{"passed": "start->home"},
+		{"follows": "start->home"},
 	], [
 		{"text": "My father-in-law pops pup from behind his newspaper, "
 				+ "like someone called his name in a lotter raffel."},
@@ -95,6 +95,17 @@ var _potential_conversations: Dictionary = {
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law strides out into the next room."},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
+	]),
+	"change_the_subject": ConversationSegment.new("(Try to change the subject)", [
+		{"follows": [
+			"start->inlaws->apologize",
+			"start->inlaws->laugh",
+			"start->home->rustic",
+			"start->home->modern",
+			]},
+	], [
+		{S: "me", "text": "So.. *cough*"},
+		{S: "me", "text": "What nice weather we've had so far this summer."},
 	]),
 
 	# Separatpor + Dummy options (remove later)
