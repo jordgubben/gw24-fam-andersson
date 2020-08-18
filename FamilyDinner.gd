@@ -104,8 +104,8 @@ var _potential_conversations: Dictionary = {
 		{"speaker": "father-in-law", "text": "Dialog text from dictionary #1"},
 		{"text": "Narration dictionary #1"},
 	]),
-	"#1a": ConversationSegment.new("Another option (sometime after first)", [
-		{"passed": "#1"}
+	"#1a": ConversationSegment.new("Another option (right after first)", [
+		{"follows": "#1"}
 	], [
 		{"text": "Follow up on #1"},
 	]),
@@ -113,8 +113,8 @@ var _potential_conversations: Dictionary = {
 		{"speaker": "mother-in-law", "text": "Dialog text from dictionary #2"},
 		{"text": "Narration dictionary #2"},
 	]),
-	"#2a": ConversationSegment.new("Different option (sometime after second)", [
-		{"passed": "#2"}
+	"#2a": ConversationSegment.new("Different option (right after second)", [
+		{"follows": "#2"}
 	], [
 		{"text": "Follow up on #2"},
 	]),
@@ -199,6 +199,17 @@ class ConversationSegment:
 
 	func fullfilled(pr, passed: Array):
 		match pr:
+			# Require that this comes directly after the given statemen(s)
+			{"follows": var key}:
+				var last_segment_key = passed.back()
+				if key is String:
+					return last_segment_key ==  key
+				elif key is Array:
+					return last_segment_key in key
+				else:
+					printerr("Unrechognized type for 'follows':", typeof(key))
+
+			# Require that this comes sometime after the given statemen(s)
 			{"passed": var key}:
 				if key is String:
 					return key in passed
