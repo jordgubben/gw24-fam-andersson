@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="narration_example" type="RichTextLabel"]
+[node name="NarrationBox" type="RichTextLabel"]
 margin_top = 104.0
 margin_right = 432.0
 margin_bottom = 149.0

@@ -2,10 +2,13 @@
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 
-[node name="dialouge_example" type="Control"]
+[node name="DialougeBox" type="Control"]
 margin_right = 432.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="speaker_portrait" type="TextureRect" parent="."]
 anchor_bottom = 1.0
