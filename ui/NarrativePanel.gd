@@ -16,6 +16,7 @@ func _ready():
 func queue_dialouge(speaker: Person, dialoug: String):
 	var d = DialougeBox.instance()
 	d.get_node("speaker_name").text = speaker.speaker_name
+	d.get_node("speaker_portrait").texture = speaker.speaker_portrait
 	d.get_node("dialouge_label").bbcode_text = dialoug
 	self.queue_element(d)
 

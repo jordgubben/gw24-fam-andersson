@@ -3,16 +3,16 @@
 [node name="NarrationBox" type="MarginContainer"]
 margin_right = 418.0
 margin_bottom = 45.0
-custom_constants/margin_top = 5
-custom_constants/margin_bottom = 5
+custom_constants/margin_top = 15
+custom_constants/margin_bottom = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="narration_label" type="RichTextLabel" parent="."]
-margin_top = 5.0
+margin_top = 15.0
 margin_right = 418.0
-margin_bottom = 40.0
+margin_bottom = 45.0
 bbcode_enabled = true
 bbcode_text = "[center] Lorem] [color=green]ipsum[/color] dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. [/center]"
 text = " Lorem] ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. "

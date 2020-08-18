@@ -4,27 +4,31 @@
 
 [node name="DialougeBox" type="Control"]
 margin_right = 432.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 0, 80 )
+margin_bottom = 130.0
+rect_min_size = Vector2( 300, 130 )
+rect_clip_content = true
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="speaker_portrait" type="TextureRect" parent="."]
 anchor_bottom = 1.0
-margin_top = 6.0
-margin_right = 64.0
-margin_bottom = -10.0
+margin_right = 80.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="speaker_name" type="Label" parent="."]
-margin_left = 70.9879
-margin_top = 13.999
-margin_right = 216.988
-margin_bottom = 27.999
+margin_left = 90.9879
+margin_top = 45.0
+margin_right = 236.988
+margin_bottom = 65.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Mr. Lorem"
 __meta__ = {
@@ -32,10 +36,12 @@ __meta__ = {
 }
 
 [node name="dialouge_label" type="RichTextLabel" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = 71.0
-margin_top = 34.0
-margin_bottom = 71.0
+anchor_bottom = 1.0
+margin_left = 90.0
+margin_top = -60.0
+margin_bottom = -14.0
 bbcode_enabled = true
 bbcode_text = "[color=blue]Lorem[/color] [i]ipsum[/i] dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. "
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa tortor, suscipit a felis nec. "
