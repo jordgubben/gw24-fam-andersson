@@ -12,7 +12,94 @@ onready var _narrative_panel: NarrativePanel = self.get_node(narrative_path)
 
 var _passed_conversations = []
 
+const S = "speaker"
+const SO = "significant_other"
+const IV = "inner_voice"
+
 var _potential_conversations: Dictionary = {
+	# Real intro
+	"start": ConversationSegment.new("(Start the actuall story)", [
+	], [
+		{S: "mother-in-law", "text": "Welcome, dear!"},
+		{S: "mother-in-law", "text": "It brings such you to finaly get to meet you."},
+	]),
+	"start->inlaws": ConversationSegment.new("It's great to finally meet my inlaws", [
+		{"passed": "start"},
+	], [
+		{S: "mother-in-law", "text": "\"Inlaws\"?!"},
+		{S: "mother-in-law",
+			"text": "We're not old enough to be someones inlaws, right dearest?"},
+		{	"text": "My new father-in-law mumbles something about [b]golf[/b]" +
+					"and [b]boats[/b] from behiond his newspaper."},
+	]),
+	"start->inlaws->apologize": ConversationSegment.new("(Apologize)", [
+		{"passed": "start->inlaws"},
+	], [
+		{S: "me", "text": "Oh.. I didn't mean to imply.."},
+		{S: SO, "text": "Mother. That's not what he/she said."},
+		{S: "mother-in-law", "text": "Don't worry! I was just.."},
+		{"text": "Suddenly. The kitchen timer rings."},
+		{S: "mother-in-law", "text": "..needed in the kitchen. Appartently."},
+		{"text": "She swirls of into the next room"},
+		{"speaker": IV, "text": "Saved by the bell, literally."}
+	]),
+	"start->inlaws->laugh": ConversationSegment.new("(Laugh it off)", [
+		{"passed": "start->inlaws"},
+	], [
+		{S: "me", "text": "Of course not."},
+		{S: "me", "text": "I've just been seeing your son/dauhter for so long."},
+		{S: "me", "text": "It seemd like the right thing to call you."},
+		{"text": "My father inlaw looks up from his newspaper."},
+		{S: "father-in-law", "text": "I was under the impression that you two met just recently."},
+		{"speaker": IV, "text": "You are?"},
+		{"text": "I glance over at my BG/GF, "+
+			"who is currently occupied avoiding eyecontat with exactly every sentient being in the known universe."},
+		{"speaker": IV, "text": "What has he/sehe told them? Do I need to keep our sories traight for some good reason?"},
+		{"text": "Suddenly. The kitchen timer rings."},
+		{S: "mother-in-law", "text": "Well, that's my queue. We'll have to talk more about this later."},
+		{"text": "She shifts gracefully in to the next room, wile keeping her eyes fixed on my fidgeting fiance."},
+	]),
+	"start->home": ConversationSegment.new("I've been so looking forward to seeing my BFs/GFs home.", [
+		{"passed": "start"},
+	], [
+		{S: "me", "text": "I'm just so supprised by how lovely this home is!"},
+		{S: "sister-in-law", "text": "\"Supprised\"?"},
+		{S: IV, "text": "\"Amazed\", I ment to say \"Amazed\"!"},
+		{S: "sister-in-law", "text": "Did you think we where poor? Living in some rough neighbourhood?"},
+		{S: SO, "text": "Sis! That's not what he/she said!"},
+		{S: "me", "text": "Um.. What I meant was.."},
+	]),
+	"start->home->rustic": ConversationSegment.new("..it's so rustic and charming", [
+		{"passed": "start->home"},
+	], [
+		{"text": "My mother-in-law struggles to stay humble, whilst truly beaming with pride."},
+		{S: "mother-in-law", "text": "Well, it might be an old place."},
+		{S: "mother-in-law", "text": "Despit that I do think we've managed to creat a home filled with warmth."},
+		{S: "father-in-law", "text": "Except when the boiler breaks or pipes jam."},
+		{S: "father-in-law", "text": "Then it's a place cold filed with bills."},
+		{S: "mother-in-law", "text": "Hmpf.. The house you wanted was.."},
+		{"text": "Suddenly. The kitchen timer rings."},
+		{"text": "My mother-in-law marches out into the next room."},
+		{S: IV, "text": "Ooookeeey... Touchy subject?"},
+	]),
+	"start->home->modern": ConversationSegment.new("..it's so modern and practical", [
+		{"passed": "start->home"},
+	], [
+		{"text": "My father-in-law pops pup from behind his newspaper, "
+				+ "like someone called his name in a lotter raffel."},
+		{S: "father-in-law", "text": "Yes, why it is, isn't it!?"},
+		{S: "father-in-law", "text": "This house has all the latest modernities."},
+		{S: "mother-in-law", "text": "Yet it it only had a fireplace.."},
+		{S: "father-in-law", "text": "..which is expensive."},
+		{S: "father-in-law", "text": "It's also a fire hassard that.."},
+		{"text": "Suddenly. The kitchen timer rings."},
+		{"text": "My mother-in-law strides out into the next room."},
+		{S: IV, "text": "Ooookeeey... Touchy subject?"},
+	]),
+
+	# Separatpor + Dummy options (remove later)
+	"---": ConversationSegment.new("--- --- --- --- --- ---", [	], [	]),
+
 	"#1": ConversationSegment.new("First alternative from dictionary", [], [
 		{"speaker": "Godot mascot", "text": "Dialog text from dictionary #1"},
 		{"text": "Narration dictionary #1"},
