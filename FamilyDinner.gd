@@ -29,8 +29,8 @@ var _potential_conversations: Dictionary = {
 		{S: "mother-in-law", "text": "\"Inlaws\"?!"},
 		{S: "mother-in-law",
 			"text": "We're not old enough to be someones inlaws, right dearest?"},
-		{	"text": "My new father-in-law mumbles something about [b]golf[/b]" +
-					"and [b]boats[/b] from behiond his newspaper."},
+		{	"text": "My new father-in-law mumbles something about [b]golf[/b] " +
+					"and [b]boats[/b] from behind his newspaper."},
 	]),
 	"start->inlaws->apologize": ConversationSegment.new("(Apologize)", [
 		{"passed": "start->inlaws"},
@@ -74,9 +74,9 @@ var _potential_conversations: Dictionary = {
 	], [
 		{"text": "My mother-in-law struggles to stay humble, whilst truly beaming with pride."},
 		{S: "mother-in-law", "text": "Well, it might be an old place."},
-		{S: "mother-in-law", "text": "Despit that I do think we've managed to creat a home filled with warmth."},
+		{S: "mother-in-law", "text": "Despit that I do think we've managed to creat a cozy home filled with love."},
 		{S: "father-in-law", "text": "Except when the boiler breaks or pipes jam."},
-		{S: "father-in-law", "text": "Then it's a place cold filed with bills."},
+		{S: "father-in-law", "text": "Then it's a cold home filled with bills."},
 		{S: "mother-in-law", "text": "Hmpf.. The house you wanted was.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law marches out into the next room."},
