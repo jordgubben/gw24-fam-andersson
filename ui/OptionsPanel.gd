@@ -17,8 +17,7 @@ func add_option(key: String, title: String):
 
 func clear_options():
 	for b in $margin/vbox.get_children():
-		prints("Removing", b, "from" , self)
-		self.remove_child(b)
+		$margin/vbox.remove_child(b)
 		b.queue_free()
 
 func on_option_clicked(key:String):
