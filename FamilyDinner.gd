@@ -108,10 +108,15 @@ var conversations_segments: Dictionary = {
 export(float, 0, 5) var anexity = 0 setget set_anexity
 func set_anexity(value: float):
 	anexity = clamp(value, 0, 5)
-	$ui/anexity_bar.target = anexity
+	if $ui/anexity_bar:
+		$ui/anexity_bar.target = anexity
+
+var _blackout: bool = false
 
 # Populate options panel with some placeholders
 func _ready():
+	$ui/anexity_bar.target = anexity
+
 	# Set gender expression of SO at random
 	randomize()
 	if randi() % 2 == 0:
@@ -127,11 +132,28 @@ func _on_options_option_selected(key):
 	$conversation.present_segment(key)
 
 func _on_narrative_pressentation_completed():
-	$conversation.pressent_options()
+	if _blackout:
+		$main_animation_player.play("blackout_anim")
+	else:
+		$conversation.pressent_options()
 
 func _on_narrative_anexity_changed(change):
 	prints(self, " _on_narrative_anexity_changed", change)
-	self.anexity += change
+
+	if self.anexity >= 5 and change >0:
+		_blackout = true
+	else:
+		self.anexity += change
+
+func _on_main_animation_player_animation_finished(anim_name):
+	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
+	if anim_name == "blackout_anim":
+		$popups_layer/blackout_popup.popup()
+	else:
+		printerr("Unknown animation:", anim_name)
+
+func _on_try_again_btn_pressed():
+	self.get_tree().reload_current_scene()
 
 func _on_rewind_btn_pressed():
 	prints("<< Rewinding a by a single step")
