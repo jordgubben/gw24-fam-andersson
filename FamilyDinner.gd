@@ -113,7 +113,7 @@ func _ready():
 
 	# Prep. conversation
 	$conversation.segments_db = conversations_segments
-	$conversation.populate_options()
+	$conversation.present_segment("start")
 
 func _on_options_option_selected(key):
 	$conversation.present_segment(key)
