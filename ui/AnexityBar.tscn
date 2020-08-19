@@ -20,6 +20,7 @@ margin_right = 64.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Anexity"
 align = 1
 valign = 1

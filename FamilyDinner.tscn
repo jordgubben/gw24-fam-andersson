@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://FamilyDinner.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsPanel.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://people/bil_port.png" type="Texture" id=9]
 [ext_resource path="res://Conversation.gd" type="Script" id=10]
 [ext_resource path="res://ui/AnexityBar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://FamilyDinner_bg.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blackout_anim"
@@ -131,7 +132,7 @@ __meta__ = {
 
 [node name="mother-in-law" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 0.392157, 0.843137, 1, 1 )
-position = Vector2( 102, 304 )
+position = Vector2( 291.602, 204.15 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "Mother-in-law"
@@ -139,7 +140,7 @@ speaker_portrait = ExtResource( 6 )
 
 [node name="sister-in-law" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
-position = Vector2( 825.215, 269.751 )
+position = Vector2( 174.51, 358.382 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "Sister-in-law"
@@ -147,7 +148,7 @@ speaker_portrait = ExtResource( 7 )
 
 [node name="brother-in-law" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 0.533333, 0.603922, 0.976471, 1 )
-position = Vector2( 1107.65, 222.003 )
+position = Vector2( 1080.72, 227.612 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "Sister-in-law"
@@ -155,7 +156,7 @@ speaker_portrait = ExtResource( 9 )
 
 [node name="significant_other" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 0.984314, 0.737255, 0.690196, 1 )
-position = Vector2( 686.872, 413.906 )
+position = Vector2( 841.695, 462.148 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "Significant other"
@@ -169,7 +170,7 @@ speaker_name = "Father in law"
 speaker_portrait = ExtResource( 8 )
 
 [node name="me" type="Sprite" parent="dining_room/occupants"]
-position = Vector2( 423.01, 447.604 )
+position = Vector2( 431.985, 536.235 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "Me"
@@ -177,11 +178,19 @@ speaker_portrait = ExtResource( 4 )
 
 [node name="inner_voice" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( 384.01, 458.604 )
+position = Vector2( 392.985, 547.235 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "My inner voice"
 speaker_portrait = ExtResource( 4 )
+
+[node name="bg" type="Sprite" parent="dining_room"]
+position = Vector2( 512.74, 283.961 )
+scale = Vector2( 0.83557, 0.83557 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="animation_finished" from="main_animation_player" to="." method="_on_main_animation_player_animation_finished"]
 [connection signal="pressed" from="popups_layer/blackout_popup/try_again_btn" to="." method="_on_try_again_btn_pressed"]
 [connection signal="anexity_changed" from="ui/narrative" to="." method="_on_narrative_anexity_changed"]

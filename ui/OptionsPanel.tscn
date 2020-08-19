@@ -14,10 +14,14 @@ __meta__ = {
 }
 
 [node name="bg" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="margin" type="MarginContainer" parent="."]
 anchor_left = 0.12
