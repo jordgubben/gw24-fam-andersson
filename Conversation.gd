@@ -69,7 +69,7 @@ func populate_options():
 
 func rewind_one_step():
 	_passed_segments.pop_back()
-	self.populate_options()
+	self.pressent_options()
 
 func pressent_options():
 	_narrative_panel.visible = false
