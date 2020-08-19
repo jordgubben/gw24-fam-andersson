@@ -104,6 +104,11 @@ var conversations_segments: Dictionary = {
 	]),
 }
 
+# Track anexity
+export(float, 0, 5) var anexity = 0 setget set_anexity
+func set_anexity(value: float):
+	anexity = clamp(value, 0, 5)
+	$ui/anexity_bar.target = anexity
 
 # Populate options panel with some placeholders
 func _ready():
@@ -126,7 +131,7 @@ func _on_narrative_pressentation_completed():
 
 func _on_narrative_anexity_changed(change):
 	prints(self, " _on_narrative_anexity_changed", change)
-	$ui/anexity_bar.target += change
+	self.anexity += change
 
 func _on_rewind_btn_pressed():
 	prints("<< Rewinding a by a single step")
