@@ -14,66 +14,6 @@
 [node name="FamilyDinner" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="conversation" type="Node" parent="."]
-script = ExtResource( 10 )
-participants_path = NodePath("../dining_room_occupants")
-
-[node name="dining_room_occupants" type="Node" parent="."]
-
-[node name="mother-in-law" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 0.392157, 0.843137, 1, 1 )
-position = Vector2( 102, 304 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Mother-in-law"
-speaker_portrait = ExtResource( 6 )
-
-[node name="sister-in-law" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
-position = Vector2( 403, 242 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Sister-in-law"
-speaker_portrait = ExtResource( 7 )
-
-[node name="brother-in-law" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 0.533333, 0.603922, 0.976471, 1 )
-position = Vector2( 431.705, -61.456 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Sister-in-law"
-speaker_portrait = ExtResource( 9 )
-
-[node name="significant_other" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 0.984314, 0.737255, 0.690196, 1 )
-position = Vector2( 338, 515 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Significant other"
-
-[node name="father-in-law" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 1, 0.678431, 0.364706, 1 )
-position = Vector2( 257, 120 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Father in law"
-speaker_portrait = ExtResource( 8 )
-
-[node name="me" type="Sprite" parent="dining_room_occupants"]
-position = Vector2( 201, 515 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "Me"
-speaker_portrait = ExtResource( 4 )
-
-[node name="inner_voice" type="Sprite" parent="dining_room_occupants"]
-modulate = Color( 1, 1, 1, 0.52549 )
-position = Vector2( 162, 526 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-speaker_name = "My inner voice"
-speaker_portrait = ExtResource( 4 )
-
 [node name="ui" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -88,14 +28,12 @@ __meta__ = {
 visible = false
 
 [node name="options" parent="ui" instance=ExtResource( 2 )]
-margin_top = 3.85535
-margin_bottom = 3.85535
+margin_top = -156.0
+margin_bottom = 4.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ui"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -40.0
 margin_right = 208.0
+margin_bottom = 40.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -113,6 +51,69 @@ text = "<< Rewind 1 step (dev only)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="conversation" type="Node" parent="."]
+script = ExtResource( 10 )
+participants_path = NodePath("../dining_room/occupants")
+
+[node name="dining_room" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="occupants" type="Node" parent="dining_room"]
+
+[node name="mother-in-law" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 0.392157, 0.843137, 1, 1 )
+position = Vector2( 102, 304 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Mother-in-law"
+speaker_portrait = ExtResource( 6 )
+
+[node name="sister-in-law" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
+position = Vector2( 825.215, 269.751 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Sister-in-law"
+speaker_portrait = ExtResource( 7 )
+
+[node name="brother-in-law" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 0.533333, 0.603922, 0.976471, 1 )
+position = Vector2( 1107.65, 222.003 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Sister-in-law"
+speaker_portrait = ExtResource( 9 )
+
+[node name="significant_other" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 0.984314, 0.737255, 0.690196, 1 )
+position = Vector2( 686.872, 413.906 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Significant other"
+
+[node name="father-in-law" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 1, 0.678431, 0.364706, 1 )
+position = Vector2( 469.099, 181.449 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Father in law"
+speaker_portrait = ExtResource( 8 )
+
+[node name="me" type="Sprite" parent="dining_room/occupants"]
+position = Vector2( 423.01, 447.604 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "Me"
+speaker_portrait = ExtResource( 4 )
+
+[node name="inner_voice" type="Sprite" parent="dining_room/occupants"]
+modulate = Color( 1, 1, 1, 0.52549 )
+position = Vector2( 384.01, 458.604 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+speaker_name = "My inner voice"
+speaker_portrait = ExtResource( 4 )
 [connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]
 [connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
 [connection signal="pressed" from="ui/MarginContainer/rewind_btn" to="." method="_on_rewind_btn_pressed"]

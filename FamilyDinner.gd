@@ -107,9 +107,9 @@ func _ready():
 	# Set gender expression of SO at random
 	randomize()
 	if randi() % 2 == 0:
-		$dining_room_occupants/significant_other.speaker_portrait = load("res://people/so_f_port.png")
+		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_f_port.png")
 	else:
-		$dining_room_occupants/significant_other.speaker_portrait = load("res://people/so_m_port.png")
+		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_m_port.png")
 
 	# Prep. conversation
 	$conversation.segments_db = conversations_segments

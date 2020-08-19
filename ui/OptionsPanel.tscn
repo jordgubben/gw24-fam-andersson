@@ -4,9 +4,10 @@
 [ext_resource path="res://ui/BlueGradientTexture.tres" type="Texture" id=2]
 
 [node name="OptionsPanel" type="Control"]
-anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -200.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,36 +20,35 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="margin" type="MarginContainer" parent="."]
-anchor_right = 1.0
+anchor_left = 0.12
+anchor_right = 0.88
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_top = 40.0
-margin_right = -40.0
-margin_bottom = -40.0
+margin_top = 30.0
+margin_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="vbox" type="VBoxContainer" parent="margin"]
-margin_right = 432.0
-margin_bottom = 520.0
+margin_right = 778.0
+margin_bottom = 160.0
 
 [node name="Button_1" type="Button" parent="margin/vbox"]
-margin_right = 432.0
+margin_right = 778.0
 margin_bottom = 20.0
 custom_constants/hseparation = 10
 text = "Do thing"
 
 [node name="Button_2" type="Button" parent="margin/vbox"]
 margin_top = 24.0
-margin_right = 432.0
+margin_right = 778.0
 margin_bottom = 44.0
 custom_constants/hseparation = 10
 text = "Do thing"
 
 [node name="Button_3" type="Button" parent="margin/vbox"]
 margin_top = 48.0
-margin_right = 432.0
+margin_right = 778.0
 margin_bottom = 68.0
 custom_constants/hseparation = 10
 text = "Do thing"
