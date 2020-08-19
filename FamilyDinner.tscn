@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://FamilyDinner.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsPanel.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://ui/AnexityBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://FamilyDinner_bg.png" type="Texture" id=12]
 [ext_resource path="res://FamilyDinner_table.png" type="Texture" id=13]
+[ext_resource path="res://people/sil_sitting_in_dining_room.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blackout_anim"
@@ -147,8 +148,9 @@ speaker_portrait = ExtResource( 6 )
 
 [node name="sister-in-law" type="Sprite" parent="dining_room/occupants"]
 modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
-position = Vector2( 174.51, 358.382 )
-texture = ExtResource( 4 )
+position = Vector2( 176.51, 346.382 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 14 )
 script = ExtResource( 5 )
 speaker_name = "Sister-in-law"
 speaker_portrait = ExtResource( 7 )
