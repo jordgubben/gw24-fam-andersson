@@ -4,7 +4,9 @@ const Person = preload("res://Person.gd")
 
 var DialougeBox: PackedScene = preload("res://ui/DialougeBox.tscn")
 var NarrationBox: PackedScene = preload("res://ui/NarrationBox.tscn")
+var AnexityBox: PackedScene = preload("res://ui/AnexityChangeBox.tscn")
 
+signal anexity_changed(change)
 signal pressentation_completed()
 
 var _postponed_elements:Array = []
@@ -26,6 +28,29 @@ func queue_narration(narration: String):
 	var label = "[center]" + narration +"[/center]"
 	n.get_node("narration_label").bbcode_text = label
 	self.queue_element(n)
+
+func queue_anexity_change(change: float):
+	var box:Control = AnexityBox.instance()
+
+	# Set label
+	var label: RichTextLabel = box.get_node("label")
+	if change > 0:
+		label.bbcode_text = "Anexity [color=red]increased[/color]!"
+	elif change < 0:
+		label.bbcode_text = "Anexity [color=blue]decreased[/color]!"
+	else:
+		label.bbcode_text = "Anexity [color=green]remained unchanged[/color]."
+
+	# Center text
+	label.bbcode_text = "[center]" + label.bbcode_text + "[/center]"
+
+	box.connect("tree_entered", self, "_on_anexity_changed", [change])
+
+	self.queue_element(box)
+
+func _on_anexity_changed(change):
+	prints(self, "_on_anexity_changed:", change)
+	self.emit_signal("anexity_changed", change)
 
 func queue_element(new_el: Control):
 	# Don't add anything more if there's already a queue

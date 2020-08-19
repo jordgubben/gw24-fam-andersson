@@ -25,8 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnexityBar" parent="ui" instance=ExtResource( 11 )]
-target = 5.0
+[node name="anexity_bar" parent="ui" instance=ExtResource( 11 )]
 
 [node name="narrative" parent="ui" instance=ExtResource( 3 )]
 visible = false
@@ -121,6 +120,7 @@ texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "My inner voice"
 speaker_portrait = ExtResource( 4 )
+[connection signal="anexity_changed" from="ui/narrative" to="." method="_on_narrative_anexity_changed"]
 [connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]
 [connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
 [connection signal="pressed" from="ui/MarginContainer/rewind_btn" to="." method="_on_rewind_btn_pressed"]

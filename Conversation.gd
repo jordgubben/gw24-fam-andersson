@@ -14,7 +14,6 @@ onready var _narrative_panel: NarrativePanel = self.get_node(narrative_path)
 export(NodePath) var participants_path = NodePath("../participants")
 onready var _participants: Node = self.get_node(participants_path)
 
-
 var _passed_segments = []
 var segments_db:Dictionary = {
 	"#1": ConversationSegment.new("First alternative from dictionary", [], [
@@ -154,6 +153,9 @@ class ConversationSegment:
 
 				{"text": var text}:
 					out.queue_narration(text)
+
+				{"change_anexity": var c }:
+					out.queue_anexity_change(c)
 
 				_:
 					printerr("Unablle to pressent", el)

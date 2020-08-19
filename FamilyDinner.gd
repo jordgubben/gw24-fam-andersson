@@ -17,6 +17,7 @@ var conversations_segments: Dictionary = {
 		{"follows": "start"},
 	], [
 		{S: "mother-in-law", "text": "\"Inlaws\"?!"},
+		{"change_anexity": +1},
 		{S: "mother-in-law",
 			"text": "We're not old enough to be someones inlaws, right dearest?"},
 		{	"text": "My new father-in-law mumbles something about [b]golf[/b] " +
@@ -31,6 +32,7 @@ var conversations_segments: Dictionary = {
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "..needed in the kitchen. Appartently."},
 		{"text": "She swirls of into the next room"},
+		{"change_anexity": -1},
 		{"speaker": IV, "text": "Saved by the bell, literally."}
 	]),
 	"start->inlaws->laugh": ConversationSegment.new("(Laugh it off)", [
@@ -47,6 +49,7 @@ var conversations_segments: Dictionary = {
 		{"speaker": IV, "text": "What has he/she told them? Do I need to keep our stories traight for some reason?"},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "Well, that's my queue. We'll have to talk more about this later."},
+		{"change_anexity": +2},
 		{"text": "She shifts gracefully in to the next room, while keeping her eyes fixed on my fidgeting fiance."},
 	]),
 	"start->home": ConversationSegment.new("I've been so looking forward to seeing my BFs/GFs home.", [
@@ -120,6 +123,10 @@ func _on_options_option_selected(key):
 
 func _on_narrative_pressentation_completed():
 	$conversation.pressent_options()
+
+func _on_narrative_anexity_changed(change):
+	prints(self, " _on_narrative_anexity_changed", change)
+	$ui/anexity_bar.target += change
 
 func _on_rewind_btn_pressed():
 	prints("<< Rewinding a by a single step")
