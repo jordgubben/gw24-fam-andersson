@@ -16,7 +16,7 @@
 resource_name = "blackout_anim"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("blackout_sprite:modulate")
+tracks/0/path = NodePath("popups_layer/blackout_sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -38,7 +38,15 @@ width = 512
 [node name="FamilyDinner" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="main_animation_player" type="AnimationPlayer" parent="."]
+anims/blackout_anim = SubResource( 1 )
+
+[node name="conversation" type="Node" parent="."]
+script = ExtResource( 10 )
+participants_path = NodePath("../dining_room/occupants")
+
 [node name="popups_layer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="blackout_popup" type="Popup" parent="popups_layer"]
 anchor_right = 1.0
@@ -72,33 +80,22 @@ margin_right = 92.0
 margin_bottom = 26.8289
 text = "Try again"
 
-[node name="main_animation_player" type="AnimationPlayer" parent="."]
-anims/blackout_anim = SubResource( 1 )
-
-[node name="blackout_sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="blackout_sprite" type="Sprite" parent="popups_layer"]
+modulate = Color( 0.464844, 0.0635529, 0.0635529, 0 )
 position = Vector2( 512, 300 )
 rotation = 1.5708
 scale = Vector2( 1.2, 1100 )
-z_index = 1
+z_as_relative = false
 texture = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ui" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ui" type="CanvasLayer" parent="."]
 
 [node name="anexity_bar" parent="ui" instance=ExtResource( 11 )]
 
 [node name="narrative" parent="ui" instance=ExtResource( 3 )]
-visible = false
 
 [node name="options" parent="ui" instance=ExtResource( 2 )]
 margin_top = -156.0
@@ -128,12 +125,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="conversation" type="Node" parent="."]
-script = ExtResource( 10 )
-participants_path = NodePath("../dining_room/occupants")
-
-[node name="dining_room" type="CanvasLayer" parent="."]
-layer = -1
+[node name="dining_room" type="Node2D" parent="."]
 
 [node name="occupants" type="Node" parent="dining_room"]
 
@@ -190,8 +182,8 @@ texture = ExtResource( 4 )
 script = ExtResource( 5 )
 speaker_name = "My inner voice"
 speaker_portrait = ExtResource( 4 )
-[connection signal="pressed" from="popups_layer/blackout_popup/try_again_btn" to="." method="_on_try_again_btn_pressed"]
 [connection signal="animation_finished" from="main_animation_player" to="." method="_on_main_animation_player_animation_finished"]
+[connection signal="pressed" from="popups_layer/blackout_popup/try_again_btn" to="." method="_on_try_again_btn_pressed"]
 [connection signal="anexity_changed" from="ui/narrative" to="." method="_on_narrative_anexity_changed"]
 [connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]
 [connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
