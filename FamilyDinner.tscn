@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://FamilyDinner.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsPanel.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Conversation.gd" type="Script" id=10]
 [ext_resource path="res://ui/AnexityBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://FamilyDinner_bg.png" type="Texture" id=12]
+[ext_resource path="res://FamilyDinner_table.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blackout_anim"
@@ -128,6 +129,12 @@ __meta__ = {
 
 [node name="dining_room" type="Node2D" parent="."]
 
+[node name="table" type="Sprite" parent="dining_room"]
+modulate = Color( 0.827451, 0.678431, 0.545098, 1 )
+position = Vector2( 447.193, 435.592 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 13 )
+
 [node name="occupants" type="Node" parent="dining_room"]
 
 [node name="mother-in-law" type="Sprite" parent="dining_room/occupants"]
@@ -185,8 +192,9 @@ speaker_name = "My inner voice"
 speaker_portrait = ExtResource( 4 )
 
 [node name="bg" type="Sprite" parent="dining_room"]
-position = Vector2( 512.74, 283.961 )
-scale = Vector2( 0.83557, 0.83557 )
+position = Vector2( 507.512, 300.889 )
+scale = Vector2( 0.85, 0.85 )
+z_index = -2
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
