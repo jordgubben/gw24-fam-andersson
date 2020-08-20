@@ -64,6 +64,7 @@ var conversations_segments: Dictionary = {
 		{S: "me", "text": "I'm just so suprised by how lovely this home is!"},
 		{S: "sister-in-law", "text": "\"Suprised\"?"},
 		{S: IV, "text": "\"Amazed\", I ment to say \"Amazed\"!"},
+		{"change_anxiety": +1},
 		{S: "sister-in-law", "text": "Did you think we where poor? Living in some rough neighbourhood?"},
 		{S: SO, "text": "Sis! That's not what he/she said!"},
 		{S: "me", "text": "Um.. What I meant was.."},
@@ -77,6 +78,7 @@ var conversations_segments: Dictionary = {
 		{S: "father-in-law", "text": "Except when the boiler breaks or pipes jam."},
 		{"text": "He turns the page for dramatic effect."},
 		{S: "father-in-law", "text": "Then it's a cold home filled with bills."},
+		{"change_anxiety": +1},
 		{S: "mother-in-law", "text": "Hmpf.. The house you wanted on the other hand.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law marches out into the next room."},
@@ -92,6 +94,7 @@ var conversations_segments: Dictionary = {
 		{S: "mother-in-law", "text": "Yet it it only had a fireplace.."},
 		{S: "father-in-law", "text": "..which is an expensive thing."},
 		{"text": "He dodges back behind his newspaper."},
+		{"change_anxiety": +1},
 		{S: "father-in-law", "text": "It's also a fire hassard that.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law strides out into the next room."},
@@ -122,7 +125,6 @@ var conversations_segments: Dictionary = {
 		{"change_anxiety": -3},
 		{"text": "The dog fruffs contently, then gets up and leaves."},
 	]),
-
 }
 
 # Track anxiety
