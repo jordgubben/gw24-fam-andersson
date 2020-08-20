@@ -103,13 +103,6 @@ var conversations_segments: Dictionary = {
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
 	]),
 
-	"change_the_subject": ConversationSegment.new("(Try to change the subject)", [
-		{"after": "start"},
-	], [
-		{S: "me", "text": "So.. *cough*"},
-		{S: "me", "text": "What nice weather we've had so far this summer."},
-	]),
-
 	# The family dog - A single use anxiety reliver
 	"doggo?": ConversationSegment.new("(Check under the table)", [
 		{"after": "start"},
@@ -127,6 +120,82 @@ var conversations_segments: Dictionary = {
 		{"change_anxiety": -3},
 		{"text": "The dog fruffs contently, then gets up and leaves."},
 	]),
+
+	# Climate change
+	"warmer_climate": ConversationSegment.new("(Try to change the subject)", [
+		{"after": "start"},
+	], [
+		{S: "me", "text":
+			"So.. *cough*\n" +
+			"What nice weather we've had so far this summer."},
+		{S: "father-in-law", "text":
+			"Why Yes, it's even better than last year isn't it."},
+		{"text": "He flipps a page."},
+		{S: "father-in-law", "text":
+			"Now if summer it going to get warmer and longer like this, " +
+			"then I don't think anyone will mind some more of this 'climate change'."},
+		{S: SO, "text":
+			"Except almost every other species on the plannet."},
+		{"text": "My father-in-law flips another page of his newspaper."},
+		{S: "father-in-law", "text":
+			"Then we can always build bigger Zoo. Who does not like the zoo?"},
+		{S: "sister-in-law", "text":
+			"Let's see.. Whales? Elephants? Most birds?"},
+		{S: IV, "text":"Introverts? Agoraphobics?"},
+	]),
+	"warmer_climate->healthy_skepticism": ConversationSegment.new("Perhapes this was just a warm summer", [
+		{"follows": "warmer_climate"},
+	], [
+		{S: "me", "text":
+			"We can't know for certain that the warm [u]this[/u] was caused by climate change, but.."},
+		{"text": "A voice from the other room interupts."},
+		{S: "mother-in-law", "text":
+			"Middle child! I need some help in the kitchen."},
+		{S: "sister-in-law", "text":
+			"Are you saying climate change isn't real?"},
+		{S: SO, "text":
+			"Mother. I'm in the middle of a discussion!?\n(And I have a name)"},
+		{S: "me", "text":
+			"I'm not saying it isn't real. I just ment that.."},
+		{"text": "Kitchen voice again."},
+		{S: "mother-in-law", "text":
+			"And I'm in the middle of making lasagna.\nNow get in here and help me out!"},
+		{"text": "My fiancé sighs, then gets up."},
+		{S: IV, "text":
+			"Don't run away righ after you dragged me in to this."},
+		{S: SO, "text":
+			"I'll be right back. Promise."},
+		{S: IV, "text":
+			"Q~Q..."},
+	]),
+		"warmer_climate->wildlife_sanctuaries": ConversationSegment.new("Wildlife sanctuaries need to expand", [
+		{"follows": "warmer_climate"},
+	], [
+		{S: "me", "text":
+			"Just making every Zoo larger might not be ideal.\n" +
+			"Wildlife sanctuaries on the other hand might.."},
+		{"text": "A voice from the other room interupts."},
+		{S: "mother-in-law", "text":
+			"Middle child! I need some help in the kitchen."},
+		{S: "father-in-law", "text":
+			"And who's land will be confiscated to build those?"},
+		{S: SO, "text":
+			"Mother. I'm in the middle of a discussion!?\n(And I have a name)"},
+		{S: "me", "text":
+			"It'll have to be a gradual process. Land owners must ofcource be compen.. "},
+		{"text": "Kitchen voice again."},
+		{S: "mother-in-law", "text":
+			"And I'm in the middle of making lasagna.\nNow get in here and help me out!"},
+		{"text": "My fiancé sighs, then gets up."},
+		{S: IV, "text":
+			"Don't run away righ after you dragged me in to this."},
+		{S: SO, "text":
+			"I'll be right back. Promise."},
+		{S: IV, "text":
+			"Q~Q..."},
+	]),
+
+
 }
 
 # Track anxiety
