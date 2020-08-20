@@ -196,8 +196,8 @@ class ConversationSegment:
 				{"text": var text}:
 					out.queue_narration(text)
 
-				{"change_anexity": var c }:
-					out.queue_anexity_change(c)
+				{"change_anxiety": var c }:
+					out.queue_anxiety_change(c)
 
 				_:
 					printerr("Unablle to pressent", el)

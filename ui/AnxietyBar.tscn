@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://ui/AnexityBar.gd" type="Script" id=2]
+[ext_resource path="res://ui/AnxietyBar.gd" type="Script" id=2]
 
-[node name="AnexityBar" type="VBoxContainer"]
+[node name="AnxietyBar" type="VBoxContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 69.0
@@ -21,7 +21,7 @@ margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Anexity"
+text = "Anxiety"
 align = 1
 valign = 1
 __meta__ = {

@@ -10,7 +10,7 @@
 [ext_resource path="res://people/fil_port.png" type="Texture" id=8]
 [ext_resource path="res://people/bil_port.png" type="Texture" id=9]
 [ext_resource path="res://Conversation.gd" type="Script" id=10]
-[ext_resource path="res://ui/AnexityBar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ui/AnxietyBar.tscn" type="PackedScene" id=11]
 [ext_resource path="res://FamilyDinner_bg.png" type="Texture" id=12]
 [ext_resource path="res://FamilyDinner_table.png" type="Texture" id=13]
 [ext_resource path="res://people/sil_sitting_in_dining_room.png" type="Texture" id=14]
@@ -43,7 +43,7 @@ width = 512
 
 [node name="FamilyDinner" type="Node2D"]
 script = ExtResource( 1 )
-anexity = 1.0
+anxiety = 1.0
 
 [node name="main_animation_player" type="AnimationPlayer" parent="."]
 anims/blackout_anim = SubResource( 1 )
@@ -72,7 +72,7 @@ margin_left = -512.0
 margin_top = -23.5
 margin_right = 512.0
 margin_bottom = -0.5
-text = "You blacked out from anexity. Not a good first implression to make."
+text = "You blacked out from anxiety. Not a good first implression to make."
 align = 1
 valign = 2
 
@@ -100,7 +100,7 @@ __meta__ = {
 
 [node name="ui" type="CanvasLayer" parent="."]
 
-[node name="anexity_bar" parent="ui" instance=ExtResource( 11 )]
+[node name="anxiety_bar" parent="ui" instance=ExtResource( 11 )]
 
 [node name="narrative" parent="ui" instance=ExtResource( 3 )]
 visible = false
@@ -212,7 +212,7 @@ __meta__ = {
 }
 [connection signal="animation_finished" from="main_animation_player" to="." method="_on_main_animation_player_animation_finished"]
 [connection signal="pressed" from="popups_layer/blackout_popup/try_again_btn" to="." method="_on_try_again_btn_pressed"]
-[connection signal="anexity_changed" from="ui/narrative" to="." method="_on_narrative_anexity_changed"]
+[connection signal="anxiety_changed" from="ui/narrative" to="." method="_on_narrative_anxiety_changed"]
 [connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]
 [connection signal="option_selected" from="ui/options" to="." method="_on_options_option_selected"]
 [connection signal="pressed" from="ui/MarginContainer/rewind_btn" to="." method="_on_rewind_btn_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="AnexityChangeBox" type="MarginContainer"]
+[node name="AnxietyChangeBox" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -673.0

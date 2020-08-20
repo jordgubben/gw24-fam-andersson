@@ -23,7 +23,7 @@ var conversations_segments: Dictionary = {
 		{"follows": "start"},
 	], [
 		{S: "mother-in-law", "text": "\"Inlaws\"?!"},
-		{"change_anexity": +1},
+		{"change_anxiety": +1},
 		{S: "mother-in-law",
 			"text": "We're not old enough to be someones inlaws, right dearest?"},
 		{	"text": "My new father-in-law mumbles something about [b]golf[/b] " +
@@ -38,7 +38,7 @@ var conversations_segments: Dictionary = {
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "..needed in the kitchen. Appartently."},
 		{"text": "She swirls of into the next room"},
-		{"change_anexity": -1},
+		{"change_anxiety": -1},
 		{"speaker": IV, "text": "Saved by the bell, literally."}
 	]),
 	"start->inlaws->laugh": ConversationSegment.new("(Laugh it off)", [
@@ -55,7 +55,7 @@ var conversations_segments: Dictionary = {
 		{"speaker": IV, "text": "What has he/she told them? Do I need to keep our stories traight for some reason?"},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "Well, that's my queue. We'll have to talk more about this later."},
-		{"change_anexity": +2},
+		{"change_anxiety": +2},
 		{"text": "She shifts gracefully in to the next room, while keeping her eyes fixed on my fidgeting fiance."},
 	]),
 	"start->home": ConversationSegment.new("I've been so looking forward to seeing my BFs/GFs home.", [
@@ -119,24 +119,24 @@ var conversations_segments: Dictionary = {
 		{"after": "doggo?"},
 	], [
 		{"text": "I reach down and stroke the long fur."},
-		{"change_anexity": -3},
+		{"change_anxiety": -3},
 		{"text": "The dog fruffs contently, then gets up and leaves."},
 	]),
 
 }
 
-# Track anexity
-export(float, 0, 5) var anexity = 0 setget set_anexity
-func set_anexity(value: float):
-	anexity = clamp(value, 0, 5)
-	if $ui/anexity_bar:
-		$ui/anexity_bar.target = anexity
+# Track anxiety
+export(float, 0, 5) var anxiety = 0 setget set_anxiety
+func set_anxiety(value: float):
+	anxiety = clamp(value, 0, 5)
+	if $ui/anxiety_bar:
+		$ui/anxiety_bar.target = anxiety
 
 var _blackout: bool = false
 
 # Populate options panel with some placeholders
 func _ready():
-	$ui/anexity_bar.target = anexity
+	$ui/anxiety_bar.target = anxiety
 
 	# Set gender expression of SO at random
 	randomize()
@@ -159,13 +159,13 @@ func _on_narrative_pressentation_completed():
 	else:
 		$conversation.pressent_options()
 
-func _on_narrative_anexity_changed(change):
-	prints(self, " _on_narrative_anexity_changed", change)
+func _on_narrative_anxiety_changed(change):
+	prints(self, " _on_narrative_anxiety_changed", change)
 
-	if self.anexity >= 5 and change >0:
+	if self.anxiety >= 5 and change >0:
 		_blackout = true
 	else:
-		self.anexity += change
+		self.anxiety += change
 
 func _on_main_animation_player_animation_finished(anim_name):
 	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
