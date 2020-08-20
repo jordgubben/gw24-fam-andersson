@@ -146,8 +146,10 @@ func _ready():
 	randomize()
 	if randi() % 2 == 0:
 		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_f_port.png")
+		$dining_room/occupants/significant_other.texture = load("res://people/so_f_sitting_in_dining_room.png")
 	else:
 		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_m_port.png")
+		$dining_room/occupants/significant_other.texture = load("res://people/so_m_sitting_in_dining_room.png")
 
 	# Prep. conversation
 	$conversation.segments_db = conversations_segments
