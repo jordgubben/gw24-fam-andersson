@@ -34,8 +34,15 @@ var segments_db:Dictionary = {
 	], [
 		{"text": "Follow up on #2"},
 	]),
+
+	"1,2?": ConversationSegment.new("Optional option (after any of the 'originals')", [
+		{"after_any": ["#1", "#2"]},
+	], [
+		{"text": "Follow up on #1 and #2"},
+	]),
+
 	"1+2=3": ConversationSegment.new("Conclusive option (after both 'originals')", [
-		{"passed": ["#1", "#2"]},
+		{"after_all": ["#1", "#2"]},
 	], [
 		{"text": "Follow up on #1 and #2"},
 	]),
@@ -144,17 +151,32 @@ class ConversationSegment:
 				else:
 					printerr("Unrechognized type for 'follows':", typeof(key))
 
-			# Require that this comes sometime after the given statemen(s)
-			{"passed": var key}:
+			# Require that this commes sometime *after* the given statemen
+			{"after": var key}:
 				if key is String:
 					return key in passed
-				elif key is Array:
-					for k in key:
+				else:
+					printerr("Unrechognized type for 'after':", typeof(key))
+
+			# Require that this commes sometime *after any* of the given statemens
+			{"after_any": var keys }:
+				if keys is Array:
+					for k in keys:
+						if k in passed:
+							return true
+					return false
+				else:
+					printerr("Unrechognized type for 'after_any':", typeof(keys))
+
+			# Require that this commes sometime *after all* of the given statemens
+			{"after_all": var keys }:
+				if keys is Array:
+					for k in keys:
 						if not k in passed:
 							return false
 					return true
 				else:
-					printerr("Unrechognized type for 'passed':", typeof(key))
+					printerr("Unrechognized type for 'after_all':", typeof(keys))
 
 			_:
 				printerr("Unrechognized prequisite:", pr)

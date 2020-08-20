@@ -99,7 +99,7 @@ var conversations_segments: Dictionary = {
 	]),
 
 	"change_the_subject": ConversationSegment.new("(Try to change the subject)", [
-		{"passed": "start"},
+		{"after": "start"},
 	], [
 		{S: "me", "text": "So.. *cough*"},
 		{S: "me", "text": "What nice weather we've had so far this summer."},
@@ -107,7 +107,7 @@ var conversations_segments: Dictionary = {
 
 	# The family dog - A single use anxiety reliver
 	"doggo?": ConversationSegment.new("(Check under the table)", [
-		{"passed": "start"},
+		{"after": "start"},
 	], [
 		{	"text": "I take a quick peak."},
 		{	"text": "A St. Bernard lays asleep right at my feet."},
@@ -116,7 +116,7 @@ var conversations_segments: Dictionary = {
 		{S: IV, "text":"My new inlaws have a D.O.G.!"},
 	]),
 	"pet-doggo!": ConversationSegment.new("(Pet dog)", [
-		{"passed": "doggo?"},
+		{"after": "doggo?"},
 	], [
 		{"text": "I reach down and stroke the long fur."},
 		{"change_anexity": -3},
@@ -148,6 +148,7 @@ func _ready():
 	# Prep. conversation
 	$conversation.segments_db = conversations_segments
 	$conversation.present_segment("start")
+
 
 func _on_options_option_selected(key):
 	$conversation.present_segment(key)
