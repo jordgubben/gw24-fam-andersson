@@ -199,5 +199,9 @@ class ConversationSegment:
 				{"change_anxiety": var c }:
 					out.queue_anxiety_change(c)
 
+				{"change_favour_of": var speaker_id, "by_amount": var c }:
+					var speaker = speakers[speaker_id]
+					out.queue_favour_change(speaker, c)
+
 				_:
 					printerr("Unablle to pressent", el)

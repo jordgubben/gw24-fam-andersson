@@ -5,8 +5,10 @@ const Person = preload("res://Person.gd")
 var DialougeBox: PackedScene = preload("res://ui/DialougeBox.tscn")
 var NarrationBox: PackedScene = preload("res://ui/NarrationBox.tscn")
 var AnxietyBox: PackedScene = preload("res://ui/AnxietyChangeBox.tscn")
+var FavourBox: PackedScene = preload("res://ui/FavourChangeBox.tscn")
 
 signal anxiety_changed(change)
+signal favour_changed(person, change)
 signal pressentation_completed()
 
 var _postponed_elements:Array = []
@@ -48,6 +50,27 @@ func queue_anxiety_change(change: float):
 	box.connect("tree_entered", self, "_on_anxiety_changed", [change])
 
 	self.queue_element(box)
+
+
+func queue_favour_change(person: Person, change: float):
+	var box:Control = FavourBox.instance()
+
+	# Set label
+	var label: RichTextLabel = box.get_node("label")
+	if change > 0:
+		label.bbcode_text = "Gained favour with %s!" % person.speaker_name
+	elif change < 0:
+		label.bbcode_text = "Last favour with %s!" % person.speaker_name
+	else:
+		label.bbcode_text = "Favour remained unchanged with %s." % person.speaker_name
+
+	# Center text
+	label.bbcode_text = "[center]" + label.bbcode_text + "[/center]"
+
+	box.connect("tree_entered", self, "_on_favour_changed", [person, change])
+
+	self.queue_element(box)
+
 
 func _on_anxiety_changed(change):
 	prints(self, "_on_anxiety_changed:", change)

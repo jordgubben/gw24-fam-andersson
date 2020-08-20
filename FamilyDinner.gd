@@ -74,6 +74,7 @@ var conversations_segments: Dictionary = {
 	], [
 		{"text": "My mother-in-law struggles to stay humble, whilst truly beaming with pride."},
 		{S: "mother-in-law", "text": "Well, it might be an old place."},
+		{"change_favour_of": "mother-in-law", "by_amount": +1 },
 		{S: "mother-in-law", "text": "Despite everything I do think we've managed to creat a cozy home filled with love."},
 		{S: "father-in-law", "text": "Except when the boiler breaks or pipes jam."},
 		{"text": "He turns the page for dramatic effect."},
@@ -90,6 +91,7 @@ var conversations_segments: Dictionary = {
 		{S: "father-in-law", "text": "Yes, why yes it is, isn't it!?"},
 		{"text": "My father-in-law pops up from behind his newspaper,\n"
 				+ "like someone called his name in a lottery raffel."},
+		{"change_favour_of": "father-in-law", "by_amount": +1 },
 		{S: "father-in-law", "text": "This house has all the latest modernities."},
 		{S: "mother-in-law", "text": "Yet it it only had a fireplace.."},
 		{S: "father-in-law", "text": "..which is an expensive thing."},
@@ -168,6 +170,11 @@ func _on_narrative_anxiety_changed(change):
 		_blackout = true
 	else:
 		self.anxiety += change
+
+func _on_narrative_favour_changed(person, change):
+	# TODO: Display and use 'favour' in some way
+	prints("Favour changed for ", person, "by", change)
+
 
 func _on_main_animation_player_animation_finished(anim_name):
 	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
