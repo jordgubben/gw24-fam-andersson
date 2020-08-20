@@ -9,9 +9,15 @@ var conversations_segments: Dictionary = {
 	# Real intro
 	"start": ConversationSegment.new("(Start the actuall story)", [
 	], [
+		{"text": "We enter the dining room, where my mother-, father- and sister-in-law are all gathered."},
 		{S: "mother-in-law",
 		"text": "Welcome, dear!\n" +
 				"It's such a joy you to finally get to meet you."},
+		{"text": "My sister-in-law nods politely. " },
+		{"text": "My father-in-law on the other hand seems to busy with his news paper to take any notice of us."},
+		{S: SO,
+			"text": "You'll have to excuse him. He'll be with us in a few moments."},
+		{"text": "I take a seat next tom my fiancé. As I do my feet bump into, somthing large and hairy under the table." },
 	]),
 	"start->inlaws": ConversationSegment.new("It's great to finally meet my inlaws", [
 		{"follows": "start"},
@@ -91,6 +97,7 @@ var conversations_segments: Dictionary = {
 		{"text": "My mother-in-law strides out into the next room."},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
 	]),
+
 	"change_the_subject": ConversationSegment.new("(Try to change the subject)", [
 		{"follows": [
 			"start->inlaws->apologize",
@@ -102,6 +109,25 @@ var conversations_segments: Dictionary = {
 		{S: "me", "text": "So.. *cough*"},
 		{S: "me", "text": "What nice weather we've had so far this summer."},
 	]),
+
+	# The family dog - A single use anxiety reliver
+	"doggo?": ConversationSegment.new("(Check under the table)", [
+		{"passed": "start"},
+	], [
+		{	"text": "I take a quick peak."},
+		{	"text": "A St. Bernard lays asleep right at my feet."},
+		{S: IV, "text":"They have a dog! They have a dog! They have a dog! They have a dog! " +
+			"They have a dog! They have a dog! They have a dog! They have a dog!"},
+		{S: IV, "text":"My new inlaws have a D.O.G.!"},
+	]),
+	"pet-doggo!": ConversationSegment.new("(Pet dog)", [
+		{"passed": "doggo?"},
+	], [
+		{"text": "I reach down and stroke the long fur."},
+		{"change_anexity": -3},
+		{"text": "The dog fruffs contently, then gets up and leaves."},
+	]),
+
 }
 
 # Track anexity

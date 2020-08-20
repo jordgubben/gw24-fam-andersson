@@ -43,6 +43,7 @@ width = 512
 
 [node name="FamilyDinner" type="Node2D"]
 script = ExtResource( 1 )
+anexity = 1.0
 
 [node name="main_animation_player" type="AnimationPlayer" parent="."]
 anims/blackout_anim = SubResource( 1 )
