@@ -99,12 +99,7 @@ var conversations_segments: Dictionary = {
 	]),
 
 	"change_the_subject": ConversationSegment.new("(Try to change the subject)", [
-		{"follows": [
-			"start->inlaws->apologize",
-			"start->inlaws->laugh",
-			"start->home->rustic",
-			"start->home->modern",
-			]},
+		{"passed": "start"},
 	], [
 		{S: "me", "text": "So.. *cough*"},
 		{S: "me", "text": "What nice weather we've had so far this summer."},

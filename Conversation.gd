@@ -59,12 +59,23 @@ func populate_options():
 		if segment.is_presentable(_passed_segments):
 			available_conversations.append([key, segment])
 
+	# Are there prioritized options?
+	var nead_to_prioritize = false
+	for a in available_conversations:
+		var key: String = a[0]
+		var segment:ConversationSegment = a[1]
+
+		if segment.is_prioritized():
+			nead_to_prioritize = true
+
 	# Add buttons for each available conversation
 	for a in available_conversations:
 		var key: String = a[0]
 		var segment:ConversationSegment = a[1]
-		var title: String = segment.title
-		_options_panel.add_option(key, title)
+
+		if not nead_to_prioritize or segment.is_prioritized():
+			var title: String = segment.title
+			_options_panel.add_option(key, title)
 
 func rewind_one_step():
 	_passed_segments.pop_back()
@@ -106,11 +117,20 @@ class ConversationSegment:
 		self.prequisites = preq
 		self.narrative = narr
 
+
 	func is_presentable(passed: Array):
 		for pr in prequisites:
 			if not fullfilled(pr, passed):
 				return false
 		return true
+
+
+	func is_prioritized():
+		for pr in prequisites:
+			if "follows" in pr.keys():
+				return true
+		return false
+
 
 	func fullfilled(pr, passed: Array):
 		match pr:
