@@ -84,7 +84,7 @@ func queue_favour_change(person: Person, change: float):
 	if change > 0:
 		label.bbcode_text = "Gained favour with %s!" % person.speaker_name
 	elif change < 0:
-		label.bbcode_text = "Last favour with %s!" % person.speaker_name
+		label.bbcode_text = "Lost favour with %s!" % person.speaker_name
 	else:
 		label.bbcode_text = "Favour remained unchanged with %s." % person.speaker_name
 
