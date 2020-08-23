@@ -228,7 +228,9 @@ func _ready():
 
 	# Prep. conversation
 	$conversation.segments_db = conversations_segments
-	$conversation.present_segment("start")
+
+	# Fade in
+	$main_animation_player.play("fade_in")
 
 
 func _on_options_option_selected(key):
@@ -262,7 +264,9 @@ func _on_narrative_animation_requested(animation_id):
 
 func _on_main_animation_player_animation_finished(anim_name):
 	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
-	if anim_name == "blackout_anim":
+	if anim_name == "fade_in":
+		$conversation.present_segment("start")
+	elif anim_name == "blackout_anim":
 		$popups_layer/blackout_popup.popup()
 	else:
 		printerr("Unknown animation:", anim_name)
