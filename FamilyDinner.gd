@@ -5,6 +5,7 @@ const S = "speaker"
 const SO = "significant_other"
 const IV = "inner_voice"
 
+var conversation_start = "start"
 var conversations_segments: Dictionary = {
 	# Real intro
 	"start": ConversationSegment.new("(Start the actuall story)", [
@@ -147,7 +148,7 @@ var conversations_segments: Dictionary = {
 			"Let's see.. Whales? Elephants? Most birds?"},
 		{S: IV, "text":"Introverts? Agoraphobics?"},
 	]),
-	"warmer_climate->healthy_skepticism": ConversationSegment.new("Perhapes this was just a warm summer", [
+	"warmer_climate->moderate_skepticism": ConversationSegment.new("Perhapes this was just a warm summer", [
 		{"follows": "warmer_climate"},
 	], [
 		{S: "me", "text":
@@ -173,7 +174,7 @@ var conversations_segments: Dictionary = {
 		{S: IV, "text":
 			"Q~Q..."},
 	]),
-		"warmer_climate->wildlife_sanctuaries": ConversationSegment.new("Wildlife sanctuaries need to expand", [
+	"warmer_climate->wildlife_sanctuaries": ConversationSegment.new("Wildlife sanctuaries need to expand", [
 		{"follows": "warmer_climate"},
 	], [
 		{S: "me", "text":
@@ -200,8 +201,43 @@ var conversations_segments: Dictionary = {
 		{S: IV, "text":
 			"Q~Q..."},
 	]),
+	"warmer_climate->moving_along": ConversationSegment.new("(Try to change the subject again)", [
+		{"follows": [
+			"warmer_climate->moderate_skepticism",
+			"warmer_climate->wildlife_sanctuaries",
+			"warmer_climate->jobbs_and_welfare",
+			"warmer_climate->inhabitable_planet",
+			]}
+	], [
+		{S: "me", "text":
+			"Perhapes we should find something more pleasant to talk about."},
+		{S: "sister-in-law", "text":
+			"*sigh*\n" +
+			"That's probaly for the best.\n" +
+			"As you can probably tell we've had this conversation a few (to many) times."
+			},
+		{S: "father-in-law", "text":
+			"On that we can agree.\n" +
+			"Let's change the topic to something of greater interest."
+			},
+		{"text":
+			"He folds up his news paper and places it next to him. " +
+			"Adjusting his glasses he leans forward and asks.."},
+		{S: "father-in-law", "text":
+			"Now. Tell us.\n" +
+			"Who might you be?"
+			},
+	]),
 
-
+	# To be continued...
+	"to_be_continued": ConversationSegment.new("(To be continued..)", [
+		{"follows": [
+			"warmer_climate->moving_along",
+			]}
+	], [
+		{"text": "Thank you for playing through this short pilot."},
+		{"text": "(That's it for now. Have a nice day.)"},
+	]),
 }
 
 # Track anxiety
@@ -265,7 +301,7 @@ func _on_narrative_animation_requested(animation_id):
 func _on_main_animation_player_animation_finished(anim_name):
 	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
 	if anim_name == "fade_in":
-		$conversation.present_segment("start")
+		$conversation.present_segment(conversation_start)
 	elif anim_name == "blackout_anim":
 		$popups_layer/blackout_popup.popup()
 	else:
