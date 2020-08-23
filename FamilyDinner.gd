@@ -37,6 +37,7 @@ var conversations_segments: Dictionary = {
 		{S: "mother-in-law", "text": "Don't worry! I was just.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "..needed in the kitchen. Appartently."},
+		{"play_animation": "mil_exits"},
 		{"text": "She swirls of into the next room"},
 		{"change_anxiety": -1},
 		{"speaker": IV, "text": "Saved by the bell, literally."}
@@ -55,6 +56,7 @@ var conversations_segments: Dictionary = {
 		{"speaker": IV, "text": "What has he/she told them? Do I need to keep our stories traight for some reason?"},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{S: "mother-in-law", "text": "Well, that's my queue. We'll have to talk more about this later."},
+		{"play_animation": "mil_exits"},
 		{"change_anxiety": +2},
 		{"text": "She shifts gracefully in to the next room, while keeping her eyes fixed on my fidgeting fiance."},
 	]),
@@ -83,6 +85,7 @@ var conversations_segments: Dictionary = {
 		{S: "mother-in-law", "text": "Hmpf.. The house you wanted on the other hand.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law marches out into the next room."},
+		{"play_animation": "mil_exits"},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
 	]),
 	"start->home->modern": ConversationSegment.new("..it's so modern and practical", [
@@ -100,6 +103,7 @@ var conversations_segments: Dictionary = {
 		{S: "father-in-law", "text": "It's also a fire hassard that.."},
 		{"text": "Suddenly. The kitchen timer rings."},
 		{"text": "My mother-in-law strides out into the next room."},
+		{"play_animation": "mil_exits"},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
 	]),
 
@@ -163,6 +167,7 @@ var conversations_segments: Dictionary = {
 		{"text": "My fiancé sighs, then gets up."},
 		{S: IV, "text":
 			"Don't run away righ after you dragged me in to this."},
+		{"play_animation": "so_exits"},
 		{S: SO, "text":
 			"I'll be right back. Promise."},
 		{S: IV, "text":
@@ -189,6 +194,7 @@ var conversations_segments: Dictionary = {
 		{"text": "My fiancé sighs, then gets up."},
 		{S: IV, "text":
 			"Don't run away righ after you dragged me in to this."},
+		{"play_animation": "so_exits"},
 		{S: SO, "text":
 			"I'll be right back. Promise."},
 		{S: IV, "text":
@@ -245,6 +251,13 @@ func _on_narrative_anxiety_changed(change):
 func _on_narrative_favour_changed(person, change):
 	# TODO: Display and use 'favour' in some way
 	prints("Favour changed for ", person, "by", change)
+
+
+func _on_narrative_animation_requested(animation_id):
+	if $main_animation_player.has_animation(animation_id):
+		$main_animation_player.play(animation_id)
+	else:
+		printerr("Unknown animation:", animation_id)
 
 
 func _on_main_animation_player_animation_finished(anim_name):

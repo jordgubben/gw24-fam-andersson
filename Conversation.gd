@@ -203,5 +203,8 @@ class ConversationSegment:
 					var speaker = speakers[speaker_id]
 					out.queue_favour_change(speaker, c)
 
+				{"play_animation": var animation_id}:
+					out.queue_animation(animation_id)
+
 				_:
 					printerr("Unablle to pressent", el)

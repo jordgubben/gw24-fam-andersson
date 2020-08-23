@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://FamilyDinner.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsPanel.tscn" type="PackedScene" id=2]
@@ -36,11 +36,41 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Animation" id=2]
+resource_name = "mil_exits"
+tracks/0/type = "value"
+tracks/0/path = NodePath("dining_room/occupants/mother-in-law:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.7411, 1 ),
+"update": 0,
+"values": [ Color( 0.392157, 0.843137, 1, 1 ), Color( 0.392157, 0.843137, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "so_exits"
+tracks/0/type = "value"
+tracks/0/path = NodePath("dining_room/occupants/significant_other:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1.86607 ),
+"update": 0,
+"values": [ Color( 0.984314, 0.737255, 0.690196, 1 ), Color( 0.984314, 0.737255, 0.690196, 0 ) ]
+}
+
+[sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0.117647, 0.0862745, 0.0627451, 1, 0.121569, 0.184314, 0.286275, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 width = 512
 
 [node name="FamilyDinner" type="Node2D"]
@@ -49,6 +79,8 @@ anxiety = 1.0
 
 [node name="main_animation_player" type="AnimationPlayer" parent="."]
 anims/blackout_anim = SubResource( 1 )
+anims/mil_exits = SubResource( 2 )
+anims/so_exits = SubResource( 3 )
 
 [node name="conversation" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -90,12 +122,12 @@ margin_bottom = 26.8289
 text = "Try again"
 
 [node name="blackout_sprite" type="Sprite" parent="popups_layer"]
-modulate = Color( 0.464844, 0.0635529, 0.0635529, 0 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 512, 300 )
 rotation = 1.5708
 scale = Vector2( 1.2, 1100 )
 z_as_relative = false
-texture = SubResource( 3 )
+texture = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -147,8 +179,8 @@ texture = ExtResource( 13 )
 [node name="occupants" type="Node" parent="dining_room"]
 
 [node name="mother-in-law" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 0.392157, 0.843137, 1, 1 )
-position = Vector2( 264.602, 226.15 )
+self_modulate = Color( 0.392157, 0.843137, 1, 1 )
+position = Vector2( 257, 234.15 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 16 )
 script = ExtResource( 5 )
@@ -156,7 +188,7 @@ speaker_name = "Mother-in-law"
 speaker_portrait = ExtResource( 6 )
 
 [node name="sister-in-law" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
+self_modulate = Color( 0.533333, 0.976471, 0.560784, 1 )
 position = Vector2( 176.51, 346.382 )
 scale = Vector2( 0.85, 0.85 )
 texture = ExtResource( 14 )
@@ -165,7 +197,7 @@ speaker_name = "Sister-in-law"
 speaker_portrait = ExtResource( 7 )
 
 [node name="brother-in-law" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 0.533333, 0.603922, 0.976471, 1 )
+self_modulate = Color( 0.533333, 0.603922, 0.976471, 1 )
 position = Vector2( 1080.72, 227.612 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
@@ -173,7 +205,7 @@ speaker_name = "Sister-in-law"
 speaker_portrait = ExtResource( 9 )
 
 [node name="significant_other" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 0.984314, 0.737255, 0.690196, 1 )
+self_modulate = Color( 0.984314, 0.737255, 0.690196, 1 )
 position = Vector2( 801.731, 389.906 )
 scale = Vector2( 0.95, 0.95 )
 z_index = -1
@@ -182,7 +214,7 @@ script = ExtResource( 5 )
 speaker_name = "Significant other"
 
 [node name="father-in-law" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 1, 0.678431, 0.364706, 1 )
+self_modulate = Color( 1, 0.678431, 0.364706, 1 )
 position = Vector2( 469.099, 181.449 )
 texture = ExtResource( 17 )
 script = ExtResource( 5 )
@@ -197,7 +229,7 @@ speaker_name = "Me"
 speaker_portrait = ExtResource( 18 )
 
 [node name="inner_voice" type="Sprite" parent="dining_room/occupants"]
-modulate = Color( 1, 1, 1, 0.52549 )
+self_modulate = Color( 1, 1, 1, 0.52549 )
 position = Vector2( 409.344, 676.389 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
@@ -214,6 +246,7 @@ __meta__ = {
 }
 [connection signal="animation_finished" from="main_animation_player" to="." method="_on_main_animation_player_animation_finished"]
 [connection signal="pressed" from="popups_layer/blackout_popup/try_again_btn" to="." method="_on_try_again_btn_pressed"]
+[connection signal="animation_requested" from="ui/narrative" to="." method="_on_narrative_animation_requested"]
 [connection signal="anxiety_changed" from="ui/narrative" to="." method="_on_narrative_anxiety_changed"]
 [connection signal="favour_changed" from="ui/narrative" to="." method="_on_narrative_favour_changed"]
 [connection signal="pressentation_completed" from="ui/narrative" to="." method="_on_narrative_pressentation_completed"]

@@ -9,6 +9,7 @@ var FavourBox: PackedScene = preload("res://ui/FavourChangeBox.tscn")
 
 signal anxiety_changed(change)
 signal favour_changed(person, change)
+signal animation_requested(animation_id)
 signal pressentation_completed()
 
 var _postponed_elements:Array = []
@@ -21,7 +22,7 @@ func queue_dialouge(speaker: Person, dialoug: String):
 	var d = DialougeBox.instance()
 	d.get_node("speaker_name").text = speaker.speaker_name
 	d.get_node("speaker_portrait").texture = speaker.speaker_portrait
-	d.get_node("speaker_portrait").modulate = speaker.modulate
+	d.get_node("speaker_portrait").modulate = speaker.self_modulate
 	d.get_node("dialouge_label").bbcode_text = dialoug
 	self.queue_element(d)
 
@@ -31,6 +32,21 @@ func queue_narration(narration: String):
 	var label = "[center]" + narration +"[/center]"
 	n.get_node("narration_label").bbcode_text = label
 	self.queue_element(n)
+
+
+func queue_animation(animation_id:String):
+	var control = Control.new()
+
+	var con_err = control.connect("tree_entered", self, "_on_animation_requested", [animation_id])
+	if con_err != OK:
+		printerr("Failed to connect '_on_animation_requested' due to error code:", con_err)
+
+	self.queue_element(control)
+
+
+func _on_animation_requested(animation_id:String ):
+	self.emit_signal("animation_requested", animation_id)
+
 
 func queue_anxiety_change(change: float):
 	var box:Control = AnxietyBox.instance()
@@ -47,9 +63,17 @@ func queue_anxiety_change(change: float):
 	# Center text
 	label.bbcode_text = "[center]" + label.bbcode_text + "[/center]"
 
-	box.connect("tree_entered", self, "_on_anxiety_changed", [change])
+	# Connect
+	var con_err := box.connect("tree_entered", self, "_on_anxiety_changed", [change])
+	if con_err != OK:
+		printerr("Failed to connect '_on_anxiety_changed' to self. Error code:", con_err)
 
 	self.queue_element(box)
+
+
+func _on_anxiety_changed(change):
+	prints(self, "_on_anxiety_changed:", change)
+	self.emit_signal("anxiety_changed", change)
 
 
 func queue_favour_change(person: Person, change: float):
@@ -72,9 +96,9 @@ func queue_favour_change(person: Person, change: float):
 	self.queue_element(box)
 
 
-func _on_anxiety_changed(change):
-	prints(self, "_on_anxiety_changed:", change)
-	self.emit_signal("anxiety_changed", change)
+func _on_favour_changed(person:Person, change: float):
+	self.emit_signal("favour_changed", person, change)
+
 
 func queue_element(new_el: Control):
 	# Don't add anything more if there's already a queue
