@@ -147,6 +147,7 @@ var conversations_segments: Dictionary = {
 		{S: "sister-in-law", "text":
 			"Let's see.. Whales? Elephants? Most birds?"},
 		{S: IV, "text":"Introverts? Agoraphobics?"},
+		{"change_anxiety": +1},
 	]),
 	"warmer_climate->moderate_skepticism": ConversationSegment.new("Perhaps this was just a warm summer", [
 		{"follows": "warmer_climate"},
@@ -158,6 +159,7 @@ var conversations_segments: Dictionary = {
 			"Middle child! I need some help in the kitchen."},
 		{S: "sister-in-law", "text":
 			"Are you saying climate change isn't real?"},
+		{"change_favour_of": "sister-in-law", "by_amount": -1 },
 		{S: SO, "text":
 			"Mother. I'm in the middle of a discussion!?\n(And I have a name)"},
 		{S: "me", "text":
@@ -185,6 +187,7 @@ var conversations_segments: Dictionary = {
 			"Middle child! I need some help in the kitchen."},
 		{S: "father-in-law", "text":
 			"And who's land will be confiscated to build those?"},
+		{"change_favour_of": "father-in-law", "by_amount": -1 },
 		{S: SO, "text":
 			"Mother. I'm in the middle of a discussion!?\n(And I have a name)"},
 		{S: "me", "text":
