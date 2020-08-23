@@ -52,6 +52,10 @@ func _ready():
 	self.populate_options()
 
 
+func get_last_segment():
+	return _passed_segments.back() if not _passed_segments.empty() else null
+
+
 func populate_options():
 	_options_panel.clear_options()
 

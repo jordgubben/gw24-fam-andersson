@@ -6,6 +6,7 @@ const SO = "significant_other"
 const IV = "inner_voice"
 
 var conversation_start = "start"
+var conversation_end = "to_be_continued"
 var conversations_segments: Dictionary = {
 	# Real intro
 	"start": ConversationSegment.new("(Start the actuall story)", [
@@ -278,6 +279,8 @@ func _on_options_option_selected(key):
 func _on_narrative_pressentation_completed():
 	if _blackout:
 		$main_animation_player.play("blackout_anim")
+	elif $conversation.get_last_segment() == conversation_end:
+		$main_animation_player.play("ending_fade_out")
 	else:
 		$conversation.pressent_options()
 
@@ -305,6 +308,8 @@ func _on_main_animation_player_animation_finished(anim_name):
 	prints(self, "_on_blackout_animation_player_animation_finished", anim_name)
 	if anim_name == "fade_in":
 		$conversation.present_segment(conversation_start)
+	elif anim_name == "ending_fade_out":
+		$popups_layer/ending_popup.popup()
 	elif anim_name == "blackout_anim":
 		$popups_layer/blackout_popup.popup()
 	else:
