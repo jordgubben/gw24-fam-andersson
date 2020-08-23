@@ -15,10 +15,10 @@ var conversations_segments: Dictionary = {
 		"text": "Welcome, dear!\n" +
 				"It's such a joy you to finally get to meet you."},
 		{"text": "My sister-in-law nods politely. " },
-		{"text": "My father-in-law on the other hand seems to busy with his news paper to take any notice of us."},
+		{"text": "My father-in-law on the other hand seems to busy with his newspaper to take any notice of us."},
 		{S: SO,
 			"text": "You'll have to excuse him. He'll be with us in a few moments."},
-		{"text": "I take a seat next tom my fiancé. As I do my feet bump into, somthing large and hairy under the table." },
+		{"text": "I take a seat next tom my fiancé. As I do so, my feet bump into somthing large and hairy under the table." },
 	]),
 	"start->inlaws": ConversationSegment.new("It's great to finally meet my inlaws", [
 		{"follows": "start"},
@@ -36,8 +36,8 @@ var conversations_segments: Dictionary = {
 		{S: "me", "text": "Oh.. I didn't mean to imply.."},
 		{S: SO, "text": "Mother. That's not what he/she said."},
 		{S: "mother-in-law", "text": "Don't worry! I was just.."},
-		{"text": "Suddenly. The kitchen timer rings."},
-		{S: "mother-in-law", "text": "..needed in the kitchen. Appartently."},
+		{"text": "Suddenly, the kitchen timer rings."},
+		{S: "mother-in-law", "text": "..needed in the kitchen. Apparently."},
 		{"play_animation": "mil_exits"},
 		{"text": "She swirls of into the next room"},
 		{"change_anxiety": -1},
@@ -48,14 +48,14 @@ var conversations_segments: Dictionary = {
 	], [
 		{S: "me", "text": "Of course not."},
 		{S: "me", "text": "I've just been seeing your son/dauhter for so long."},
-		{S: "me", "text": "It seemd like the right thing to call you."},
-		{"text": "My father inlaw looks up from his newspaper."},
+		{S: "me", "text": "It seemed like the right thing to call you."},
+		{"text": "My father in law looks up from his newspaper."},
 		{S: "father-in-law", "text": "I was under the impression that you two met just recently."},
-		{"speaker": IV, "text": "You where?"},
+		{"speaker": IV, "text": "You were?"},
 		{"text": "I glance over at my BG/GF, "+
 			"who is currently occupied avoiding eyecontat with exactly every sentient being in the known universe."},
-		{"speaker": IV, "text": "What has he/she told them? Do I need to keep our stories traight for some reason?"},
-		{"text": "Suddenly. The kitchen timer rings."},
+		{"speaker": IV, "text": "What has he/she told them? Do I need to keep our stories straight for some reason?"},
+		{"text": "Suddenly, the kitchen timer rings."},
 		{S: "mother-in-law", "text": "Well, that's my queue. We'll have to talk more about this later."},
 		{"play_animation": "mil_exits"},
 		{"change_anxiety": +2},
@@ -78,13 +78,13 @@ var conversations_segments: Dictionary = {
 		{"text": "My mother-in-law struggles to stay humble, whilst truly beaming with pride."},
 		{S: "mother-in-law", "text": "Well, it might be an old place."},
 		{"change_favour_of": "mother-in-law", "by_amount": +1 },
-		{S: "mother-in-law", "text": "Despite everything I do think we've managed to creat a cozy home filled with love."},
+		{S: "mother-in-law", "text": "Despite everything I do think we've managed to create a cozy home filled with love."},
 		{S: "father-in-law", "text": "Except when the boiler breaks or pipes jam."},
 		{"text": "He turns the page for dramatic effect."},
 		{S: "father-in-law", "text": "Then it's a cold home filled with bills."},
 		{"change_anxiety": +1},
 		{S: "mother-in-law", "text": "Hmpf.. The house you wanted on the other hand.."},
-		{"text": "Suddenly. The kitchen timer rings."},
+		{"text": "Suddenly, the kitchen timer rings."},
 		{"text": "My mother-in-law marches out into the next room."},
 		{"play_animation": "mil_exits"},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
@@ -97,12 +97,12 @@ var conversations_segments: Dictionary = {
 				+ "like someone called his name in a lottery raffel."},
 		{"change_favour_of": "father-in-law", "by_amount": +1 },
 		{S: "father-in-law", "text": "This house has all the latest modernities."},
-		{S: "mother-in-law", "text": "Yet it it only had a fireplace.."},
+		{S: "mother-in-law", "text": "Yet if it only had a fireplace.."},
 		{S: "father-in-law", "text": "..which is an expensive thing."},
 		{"text": "He dodges back behind his newspaper."},
 		{"change_anxiety": +1},
 		{S: "father-in-law", "text": "It's also a fire hassard that.."},
-		{"text": "Suddenly. The kitchen timer rings."},
+		{"text": "Suddenly, the kitchen timer rings."},
 		{"text": "My mother-in-law strides out into the next room."},
 		{"play_animation": "mil_exits"},
 		{S: IV, "text": "Ooookeeey... Touchy subject?"},
@@ -123,7 +123,7 @@ var conversations_segments: Dictionary = {
 	], [
 		{"text": "I reach down and stroke the long fur."},
 		{"change_anxiety": -3},
-		{"text": "The dog fruffs contently, then gets up and leaves."},
+		{"text": "The dog ruffs contently, then gets up and leaves."},
 	]),
 
 	# Climate change
@@ -135,7 +135,7 @@ var conversations_segments: Dictionary = {
 			"What nice weather we've had so far this summer."},
 		{S: "father-in-law", "text":
 			"Why Yes, it's even better than last year isn't it."},
-		{"text": "He flipps a page."},
+		{"text": "He flips a page."},
 		{S: "father-in-law", "text":
 			"Now if summer it going to get warmer and longer like this, " +
 			"then I don't think anyone will mind some more of this 'climate change'."},
@@ -148,7 +148,7 @@ var conversations_segments: Dictionary = {
 			"Let's see.. Whales? Elephants? Most birds?"},
 		{S: IV, "text":"Introverts? Agoraphobics?"},
 	]),
-	"warmer_climate->moderate_skepticism": ConversationSegment.new("Perhapes this was just a warm summer", [
+	"warmer_climate->moderate_skepticism": ConversationSegment.new("Perhaps this was just a warm summer", [
 		{"follows": "warmer_climate"},
 	], [
 		{S: "me", "text":
@@ -188,7 +188,7 @@ var conversations_segments: Dictionary = {
 		{S: SO, "text":
 			"Mother. I'm in the middle of a discussion!?\n(And I have a name)"},
 		{S: "me", "text":
-			"It'll have to be a gradual process. Land owners must ofcource be compen.. "},
+			"It'll have to be a gradual process. Land owners must of course be compen.. "},
 		{"text": "Kitchen voice again."},
 		{S: "mother-in-law", "text":
 			"And I'm in the middle of making lasagna.\nNow get in here and help me out!"},
@@ -210,19 +210,19 @@ var conversations_segments: Dictionary = {
 			]}
 	], [
 		{S: "me", "text":
-			"Perhapes we should find something more pleasant to talk about."},
+			"Perhaps we should find something more pleasant to talk about."},
 		{S: "sister-in-law", "text":
 			"*sigh*\n" +
 			"That's probaly for the best.\n" +
-			"As you can probably tell we've had this conversation a few (to many) times."
+			"As you can probably tell we've had this conversation a few (too many) times."
 			},
 		{S: "father-in-law", "text":
 			"On that we can agree.\n" +
 			"Let's change the topic to something of greater interest."
 			},
 		{"text":
-			"He folds up his news paper and places it next to him. " +
-			"Adjusting his glasses he leans forward and asks.."},
+			"He folds up his newspaper and places it next to him. " +
+			"Adjusting his glasses, he leans forward and asks.."},
 		{S: "father-in-law", "text":
 			"Now. Tell us.\n" +
 			"Who might you be?"
