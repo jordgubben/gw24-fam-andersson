@@ -217,12 +217,12 @@ var _blackout: bool = false
 func _ready():
 	$ui/anxiety_bar.target = anxiety
 
-	# Set gender expression of SO at random
-	randomize()
-	if randi() % 2 == 0:
+	# Configute SO appearence
+	var so_ge = settings.so_gender_expression
+	if so_ge == "grl":
 		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_f_port.png")
 		$dining_room/occupants/significant_other.texture = load("res://people/so_f_sitting_in_dining_room.png")
-	else:
+	else: #(if so_ge == "boi")
 		$dining_room/occupants/significant_other.speaker_portrait = load("res://people/so_m_port.png")
 		$dining_room/occupants/significant_other.texture = load("res://people/so_m_sitting_in_dining_room.png")
 

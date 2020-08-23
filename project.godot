@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Meeting Fam. Andersson (GW #24)"
-run/main_scene="res://FamilyDinner.tscn"
+run/main_scene="res://Intro.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+settings="*res://Settings.gd"
 
 [display]
 
